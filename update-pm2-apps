@@ -1,0 +1,8 @@
+#!/bin/bash
+# This script iterates over every folder in a root folder and runs git pull in each folder.
+cd ~/apps
+for d in */ ; do
+    cd "$d"
+    git pull
+    cd ..
+done 

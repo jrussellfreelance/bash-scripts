@@ -1,0 +1,10 @@
+#!/bin/bash
+# This script monitors every website entry you put here.  For instance, an example would be:
+if curl -I https://www.jesserussell.net | grep -q "200"; then
+        echo www.jesserussell.net is up!
+else
+        echo www.jesserussell.net is down. Sending email...
+        mail -s "https://www.jesserussell.net" "user.email@website.com" <<EOF
+www.jesserussell.net is down
+EOF
+fi

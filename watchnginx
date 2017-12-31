@@ -1,0 +1,7 @@
+#!/bin/bash
+# This script watches the nginx folder for changes, and calls a script to restart nginx and php-fpm when that happens.
+# To use the script you need to have inotifywait installed, and you need to have a symbolic link for my restart-web script to /usr/share/restart-web.
+while true # Run indefinitely
+do
+inotifywait -r -e modify,attrib,close_write,move,create,delete /etc/nginx && /bin/bash /usr/share/bin/restart-web
+done
