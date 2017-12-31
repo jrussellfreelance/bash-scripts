@@ -64,6 +64,8 @@ touch /usr/share/nginx/$WEBNAME/php.ini
 echo "upload_max_filesize = 200M" >> /usr/share/nginx/$WEBNAME/php.ini
 echo "post_max_size = 200M" >> /usr/share/nginx/$WEBNAME/php.ini
 echo "max_execution_time = 300" >> /usr/share/nginx/$WEBNAME/php.ini
+# Create wp-config.php from wp-config-sample.php
+cp /usr/share/nginx/$WEBNAME/wp-config-sample.php /usr/share/nginx/$WEBNAME/wp-config.php
 # Change ownership of files to www-data 
 echo "Changing ownership of files to www-data..."
 chown www-data:www-data /usr/share/nginx/$WEBNAME -R
