@@ -85,5 +85,5 @@ service php7.0-fpm restart
 service nginx restart
 # Run certbot
 echo "Running cerbot..."
-certbot --nginx -d www.$WEBURL
+certbot --nginx -d $WEBURL
 echo "All done! =D"
