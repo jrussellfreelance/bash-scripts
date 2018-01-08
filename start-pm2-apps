@@ -5,6 +5,7 @@
 cd ~/apps
 for d in */ ; do
     cd "$d"
-    pm2 start server.js --name "$d"
+    dir=${d%?}
+    pm2 start server.js --name "$dir"
     cd ..
 done

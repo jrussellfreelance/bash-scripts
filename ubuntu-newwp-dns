@@ -42,7 +42,7 @@ EOF
 # Create nginx config
 echo "Creating nginx config..."
 # Copy contents of default file into new config file
-cat ~/wpdns >> /etc/nginx/sites-available/$WEBNAME
+cp wpdns /etc/nginx/sites-available/$WEBNAME
 # Link nginx config to sites-enabled folder
 ln -s /etc/nginx/sites-available/$WEBNAME /etc/nginx/sites-enabled/$WEBNAME
 # Replace placeholder values from default file with values from read commands
@@ -76,7 +76,7 @@ sed -i 's/username_here/'$DBUSER'/g' /usr/share/nginx/$WEBNAME/wp-config.php
 sed -i 's/password_here/'$DBPWD'/g' /usr/share/nginx/$WEBNAME/wp-config.php
 echo "Creating php-fpm pool config..."
 # Create php-fpm config
-cat ~/default.conf >> /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
+cp default.conf /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
 # Replace placeholder values with values from read commands
 echo "Replacing values..."
 sed -i 's/pool_name_here/'$WEBNAME'/g' /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
