@@ -20,8 +20,6 @@ newdb-mysql: Creates a new MySQL database and user.
 
 restart-web: Restarts the nginx and php-fpm services.
 
-rmwp: Removes and deletes a wordpress instance.
-
 setup-docker-compose.sh: Installs docker-compose on your server.
 
 start-pm2-apps: Starts all Node.js apps inside a root folder.
@@ -39,6 +37,8 @@ ubuntu-new-systemd: Creates a systemctl service entry for the command you give i
 ubuntu-newwp-dns: Creates a new wordpress instance with a DNS entry / url.
 
 ubuntu-newwp-port: Creates a new wordpress instance that runs on a port.
+
+ubuntu-rmwp: Removes and deletes a wordpress instance.
 
 ubuntu-setup-ajenti-server.sh: Installs Ajenti 1 on your server.
 
