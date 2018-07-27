@@ -1,17 +1,17 @@
 #!/bin/bash
-echo "An Nginx reverse proxy config file generator"
+echo "An Nginx redirect config file generator"
 # Grab variables
 while [[ -z "$APPNAME" ]]
 do
   read -p "App Name: " APPNAME
 done
-while [[ -z "$DOMAIN" ]]
+while [[ -z "$TODOMAIN" ]]
 do
-  read -p "Domain (i.e. sub.website.com):" DOMAIN
+  read -p "Domain to redirect to (i.e. website.com):" TODOMAIN
 done
-while [[ -z "$PORT" ]]
+while [[ -z "$FROMDOMAIN" ]]
 do
-  read -p "Port: " PORT
+  read -p "Domain to redirect from (i.e. www.website.com):" FROMDOMAIN
 done
 # Start creating config file
 echo "Creating nginx config..."
@@ -21,14 +21,13 @@ cp reverseproxy /etc/nginx/sites-available/$APPNAME
 ln -s /etc/nginx/sites-available/$APPNAME /etc/nginx/sites-enabled/$APPNAME
 # Replace placeholder values from default file with values from read commands
 echo "Replacing values..."
-sed -i 's/sub.domain.ext/'$DOMAIN'/g' /etc/nginx/sites-available/$APPNAME
-sed -i 's/porthere/'$PORT'/g' /etc/nginx/sites-available/$APPNAME
-sed -i 's/appname/'$APPNAME'/g' /etc/nginx/sites-available/$APPNAME
+sed -i 's/redirect_from_me/'$FROMDOMAIN'/g' /etc/nginx/sites-available/$APPNAME
+sed -i 's/redirect_to_me/'$TODOMAIN'/g' /etc/nginx/sites-available/$APPNAME
 # Restart nginx
 echo "Restarting nginx..."
 systemctl restart nginx
 # Run certbot to generate CA certified ssl certificate
 echo "Running certbot..."
-certbot --nginx -d $DOMAIN
+certbot --nginx -d $FROMDOMAIN
 # Finished
 echo "All done! =D"

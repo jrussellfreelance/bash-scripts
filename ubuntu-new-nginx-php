@@ -1,10 +1,22 @@
 #!/bin/bash
 echo "An Nginx php-fpm config file generator"
 # Grab variables
-read -p "App Name: " APPNAME
-read -p "Domain (i.e. sub.website.com):" DOMAIN
-read -p "PHP-FPM Port: " PORT
-read -p "Path to website files: " ROOTPATH
+while [[ -z "$APPNAME" ]]
+do
+  read -p "App Name: " APPNAME
+done
+while [[ -z "$DOMAIN" ]]
+do
+  read -p "Domain (i.e. sub.website.com):" DOMAIN
+done
+while [[ -z "$PORT" ]]
+do
+  read -p "PHP-FPM Port: " PORT
+done
+while [[ -z "$ROOTPATH" ]]
+do
+  read -p "Path to website files: " ROOTPATH
+done
 # Start creating config file
 echo "Creating nginx config..."
 # Copy contents of default file into new config file
