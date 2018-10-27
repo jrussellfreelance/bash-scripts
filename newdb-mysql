@@ -6,7 +6,7 @@ read -p "New database name: " NEWDB
 read -p "New database user: " NEWUSER
 read -p "New database user password: " NEWPWD
 # Create new database and user
-mysql -uroot -pYourRootPasswordHere <<EOF 
+mysql -uroot -pWilliam992 <<EOF 
 CREATE DATABASE $NEWDB;
 CREATE USER $NEWUSER@localhost IDENTIFIED BY "$NEWPWD";
 GRANT ALL PRIVILEGES ON $NEWDB.* TO $NEWUSER@localhost IDENTIFIED BY '$NEWPWD';
