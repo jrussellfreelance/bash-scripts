@@ -1,4 +1,0 @@
-server {
-  server_name redirect_from_me;
-  return 301 $scheme://redirect_to_me$request_uri;
-}
