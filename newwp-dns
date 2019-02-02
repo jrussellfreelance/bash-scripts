@@ -52,11 +52,11 @@ sed -i 's/900x/'$PORT'/g' /etc/nginx/sites-enabled/$WEBNAME
 sed -i 's/site_files_here/'$WEBNAME'/g' /etc/nginx/sites-enabled/$WEBNAME
 echo "Creating php-fpm pool config..."
 # Create php-fpm config
-cp default.conf /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
+cp default.conf /etc/php/7.2/fpm/pool.d/$WEBNAME.conf
 # Replace placeholder values with values from read commands
 echo "Replacing values..."
-sed -i 's/pool_name_here/'$WEBNAME'/g' /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
-sed -i 's/900x/'$PORT'/g' /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
+sed -i 's/pool_name_here/'$WEBNAME'/g' /etc/php/7.2/fpm/pool.d/$WEBNAME.conf
+sed -i 's/900x/'$PORT'/g' /etc/php/7.2/fpm/pool.d/$WEBNAME.conf
 echo "Downloading wordpress files..."
 cd /tmp
 wget http://wordpress.org/latest.tar.gz
@@ -83,7 +83,7 @@ sed -i 's/username_here/'$DBUSER'/g' /usr/share/nginx/$WEBNAME/wp-config.php
 sed -i 's/password_here/'$DBPWD'/g' /usr/share/nginx/$WEBNAME/wp-config.php
 # Restart nginx and php-fpm
 echo "Restarting services..."
-service php7.0-fpm restart
+service php7.2-fpm restart
 service nginx restart
 # Run certbot
 echo "Running cerbot..."

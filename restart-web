@@ -2,5 +2,5 @@
 echo "Restarting Nginx service..."
 systemctl restart nginx
 echo "Restarting PHP-FPM service..."
-systemctl restart php7.0-fpm
+systemctl restart php7.2-fpm
 echo "Done!"

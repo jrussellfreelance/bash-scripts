@@ -11,6 +11,6 @@ cp redirect /etc/nginx/sites-available/$WEBNAME
 ln -s /etc/nginx/sites-available/$WEBNAME /etc/nginx/sites-enabled/$WEBNAME
 sed -i 's/www.example.com/'$WEBNAME'/g' /etc/nginx/sites-enabled/$WEBNAME
 sed -i 's/example.com/'$WEBURL'/g' /etc/nginx/sites-enabled/$WEBNAME
-service php7.0-fpm restart
+service php7.2-fpm restart
 service nginx restart
 certbot --nginx -d $WEBNAME
