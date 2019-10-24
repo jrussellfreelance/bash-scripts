@@ -1,7 +1,7 @@
 server {
         listen 80;
         root /usr/share/nginx/site_files_here;
-        server_name www.domain.ext;
+        server_name sub.domain.ext;
         index index.php;
         client_max_body_size 200m;
         location = /favicon.ico {

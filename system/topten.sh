@@ -1,4 +1,6 @@
 #!/bin/bash
+# This script runs for the specified amount of minutes, and calculates the top ten processes by resource usage.
+# At the end it outputs two CSV files, sorted by memory and cpu usage.
 # Set IFS to newline
 IFS='
 '
@@ -25,7 +27,7 @@ else
     exec_count=$((($time*60)/10))
 
     # Create associative array
-    declare -A cpu_datas
+    declare -A cpu_data
     declare -A mem_data
     declare -A ppid_data
     declare -A cmd_data

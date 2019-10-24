@@ -1,4 +1,5 @@
 #!/bin/bash
+# Designed for Ubuntu 18.04
 echo "A Wordpress website deletion script"
 echo "Running ls -al /usr/share/nginx to show you the list of wordpress sites..."
 ls -al /usr/share/nginx
@@ -24,7 +25,7 @@ rm -r /usr/share/nginx/$WEBNAME
 echo "Deleting Nginx config..."
 rm /etc/nginx/sites-enabled/$WEBNAME
 echo "Deleting PHP-FPM pool config..."
-rm /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
+rm /etc/php/7.2/fpm/pool.d/$WEBNAME.conf
 echo "Deleting MySQL database..."
 mysql -uroot -p$ROOTPWD <<EOF
 DROP DATABASE $DBNAME;
@@ -33,6 +34,6 @@ FLUSH PRIVILEGES;
 exit
 EOF
 echo "Restarting services..."
-systemctl restart php7.0-fpm
+systemctl restart php7.2-fpm
 systemctl restart nginx
 echo "All done!"

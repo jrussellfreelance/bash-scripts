@@ -1,18 +1,19 @@
 #!/bin/bash
-# This script creates a wordpress site that is tied to a url, rather than listening on a port.
+# Designed for Ubuntu 18.04
+# This script creates a wordpress site that listens on a port, rather than it being tied to a dns entry or url.
 echo "A Wordpress website creation script"
 # Grab variables
 while [[ -z "$WEBNAME" ]]
 do
-    read -p "Website Name: " WEBNAME
+    read -p "Website Name (NO SPACES): " WEBNAME
 done
 while [[ -z "$WEBURL" ]]
 do
-    read -p "Website Url (FQDN): " WEBURL
+    read -p "Website Port (example: 8080): " WEBURL
 done
 while [[ -z "$PORT" ]]
 do
-    read -p "PHP-FPM Port: " PORT
+    read -p "PHP-FPM Port (example: 9000): " PORT
 done
 while [[ -z "$DBNAME" ]]
 do
@@ -42,21 +43,15 @@ EOF
 # Create nginx config
 echo "Creating nginx config..."
 # Copy contents of default file into new config file
-cp wpdns /etc/nginx/sites-available/$WEBNAME
+cp ../templates/nginx/wpport /etc/nginx/sites-available/$WEBNAME
 # Link nginx config to sites-enabled folder
 ln -s /etc/nginx/sites-available/$WEBNAME /etc/nginx/sites-enabled/$WEBNAME
 # Replace placeholder values from default file with values from read commands
 echo "Replacing values..."
-sed -i 's/www.domain.ext/'$WEBURL'/g' /etc/nginx/sites-enabled/$WEBNAME
-sed -i 's/900x/'$PORT'/g' /etc/nginx/sites-enabled/$WEBNAME
-sed -i 's/site_files_here/'$WEBNAME'/g' /etc/nginx/sites-enabled/$WEBNAME
-echo "Creating php-fpm pool config..."
-# Create php-fpm config
-cp default.conf /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
-# Replace placeholder values with values from read commands
-echo "Replacing values..."
-sed -i 's/pool_name_here/'$WEBNAME'/g' /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
-sed -i 's/900x/'$PORT'/g' /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
+sed -i 's/port_name_here/'$WEBURL'/g' /etc/nginx/sites-available/$WEBNAME
+sed -i 's/900x/'$PORT'/g' /etc/nginx/sites-available/$WEBNAME
+sed -i 's/site_files_here/'$WEBNAME'/g' /etc/nginx/sites-available/$WEBNAME
+# Create Wordpress files
 echo "Downloading wordpress files..."
 cd /tmp
 wget http://wordpress.org/latest.tar.gz
@@ -73,7 +68,7 @@ echo "post_max_size = 200M" >> /usr/share/nginx/$WEBNAME/php.ini
 echo "max_execution_time = 300" >> /usr/share/nginx/$WEBNAME/php.ini
 # Create wp-config.php from wp-config-sample.php
 cp /usr/share/nginx/$WEBNAME/wp-config-sample.php /usr/share/nginx/$WEBNAME/wp-config.php
-# Change ownership of files to www-data
+# Change ownership of files to www-data 
 echo "Changing ownership of files to www-data..."
 chown www-data:www-data /usr/share/nginx/$WEBNAME -R
 # Replace placeholder values with database information
@@ -81,11 +76,17 @@ echo "Replacing wp-config.php values..."
 sed -i 's/database_name_here/'$DBNAME'/g' /usr/share/nginx/$WEBNAME/wp-config.php
 sed -i 's/username_here/'$DBUSER'/g' /usr/share/nginx/$WEBNAME/wp-config.php
 sed -i 's/password_here/'$DBPWD'/g' /usr/share/nginx/$WEBNAME/wp-config.php
+# Create php-fpm config
+echo "Creating php-fpm pool config..."
+# Copy contents of default file into new config file
+cp ../templates/php-fpm/phpfpm.conf /etc/php/7.2/fpm/pool.d/$WEBNAME.conf
+# Replace placeholder values with values from read commands
+echo "Replacing values..."
+sed -i 's/pool_name_here/'$WEBNAME'/g' /etc/php/7.2/fpm/pool.d/$WEBNAME.conf
+sed -i 's/900x/'$PORT'/g' /etc/php/7.2/fpm/pool.d/$WEBNAME.conf
 # Restart nginx and php-fpm
 echo "Restarting services..."
-service php7.0-fpm restart
-service nginx restart
-# Run certbot
-echo "Running cerbot..."
-certbot --nginx -d $WEBURL
+systemctl restart php7.2-fpm
+systemctl restart nginx
+# Finished
 echo "All done! =D"

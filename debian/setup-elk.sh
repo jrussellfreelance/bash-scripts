@@ -30,20 +30,18 @@ apt-get --assume-yes install python-certbot-nginx
 echo "Enabling services..."
 systemctl enable elasticsearch
 systemctl enable kibana
-systemctl enable elasticsearch
 systemctl enable nginx
 # Configure nginx
 echo "Configuring Nginx..."
 echo "admin:$(openssl passwd -apr1 $KIBANAPASS)" | sudo tee -a /etc/nginx/htpasswd.kibana
 rm -f /etc/nginx/sites-enabled/default
-cp elk-rp /etc/nginx/sites-available/elk
+cp ../templates/nginx/elk /etc/nginx/sites-available/elk
 ln -s /etc/nginx/sites-available/elk /etc/nginx/sites-enabled/elk
 sed -i 's/sub.domain.ext/'$URL'/g' /etc/nginx/sites-available/elk
 # Restart services
 echo "Restarting services..."
 systemctl restart elasticsearch
 systemctl restart kibana
-systemctl restart elasticsearch
 systemctl restart nginx
 # Run certbot
 echo "Running cerbot..."
