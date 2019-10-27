@@ -1,5 +1,9 @@
 #!/bin/bash
 # This script creates a new MongoDB database and database user
+verbose=
+newdb=
+newuser=
+newpwd=
 echo A MongoDB Database Creation Script
 # Grab new database name, user, and password
 while [[ -z "$NEWDB" ]]
