@@ -34,7 +34,7 @@ while [ "$1" != "" ]; do
     esac
     shift
 done
-if [ [-z "$name"] || [-z "$pass1"] || [-z "$pass2"]  ]; then
+if [ -z "$name" || -z "$pass1" || -z "$pass2"  ]; then
 	usage
 else
 useradd -s /bin/bash -d /home/$name/ -m -G sudo $name
