@@ -1,6 +1,6 @@
 #!/bin/bash
 # Designed for Ubuntu
-# script - A script that creates a new sudo user
+# create-sudo-user - A script that creates a new sudo user
 
 ##### Functions
 
@@ -10,33 +10,40 @@ usage()
 }
 
 ##### Main
-
+# Set variables
 name=
 pass1=
 pass2=
-
+# Process arguments
 while [ "$1" != "" ]; do
     case $1 in
-        -u | --user )           shift
-                                name=$1
-                                ;;
-        -p1 | --pass1 )         shift
-                                pass1=$1
-                                ;;
-        -p2 | --pass2 )         shift
-                                pass2=$1
-                                ;;
-        -h | --help )           usage
-                                exit
-                                ;;
-        * )                     usage
-                                exit 1
+        -u | --user )
+            shift
+            name=$1
+            ;;
+        -p1 | --pass1 )
+            shift
+            pass1=$1
+            ;;
+        -p2 | --pass2 )
+            shift
+            pass2=$1
+            ;;
+        -h | --help )
+            usage
+            exit
+            ;;
+        * )
+            usage
+            exit 1
     esac
     shift
 done
+# Validate variables
 if [ -z "$name" || -z "$pass1" || -z "$pass2"  ]; then
 	usage
 else
+# Execute script
 useradd -s /bin/bash -d /home/$name/ -m -G sudo $name
 passwd $name <<EOF
 $pass1
