@@ -15,4 +15,6 @@ add-apt-repository universe
 # Install PowerShell
 apt install -y powershell
 
+# Delete deb file
+rm -f packages-microsoft-prod.deb
 echo "All done! =D"
