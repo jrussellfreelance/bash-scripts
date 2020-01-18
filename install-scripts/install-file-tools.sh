@@ -4,6 +4,6 @@
 apt update
 # Install apps
 echo "Installing cifs-utils..."
-apt --assume-yes install cifs-utils
+apt install -y cifs-utils
 echo "Installing samba..."
-apt --assume-yes install samba
+apt install -y samba

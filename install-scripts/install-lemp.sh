@@ -4,21 +4,21 @@
 echo "A LEMP web server set up script"
 echo "Installing Nginx..."
 apt-get update
-apt-get --assume-yes install nginx
+apt install -y nginx
 echo "Allowing Nginx through ufw firewall"
 ufw allow "Nginx Full"
 echo "Installing certbot and Let's Encrypt..."
 add-apt-repository ppa:certbot/certbot
 apt-get update
-apt-get --assume-yes install python-certbot-nginx
+apt install -y python-certbot-nginx
 echo "Restarting Nginx..."
 systemctl restart nginx
 echo "Installing MySQL..."
-apt-get --assume-yes install mysql-server
+apt install -y mysql-server
 echo "Running MySQL secure installation script..."
 mysql_secure_installation
 echo "Installing PHP-FPM..."
-sudo apt-get --assume-yes install php-fpm php-mysql
+apt install -y php-fpm php-mysql
 echo "Disabling CGI Fix Path Info"
 sed -i 's/;*cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/fpm/php.ini
 echo "Restarting PHP-FPM..."
