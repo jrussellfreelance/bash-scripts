@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt install -y \
+apt install -y \
 git \
 nano \
 curl \
