@@ -7,4 +7,5 @@ wget \
 unzip \
 net-tools \
 build-essential \
-apt-transport-https
+apt-transport-https \
+software-properties-common
