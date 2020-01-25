@@ -1,45 +1,40 @@
 #!/bin/bash
 # Designed for Ubuntu
-# script - A script that creates a new sudo user
+# create-sudo-user.sh - A script that creates a new sudo user via prompts
 
-##### Functions
+### Assign Color Variables
+BLACK=0
+RED=1
+GREEN=2
+YELLOW=3
+BLUE=4
+MAGENTA=5
+CYAN=6
 
-usage()
-{
-    echo "sudo bash create-sudo-user -u user -p1 password -p2 password"
-}
-
-##### Main
-
-name=
-pass1=
-pass2=
-
-while [ "$1" != "" ]; do
-    case $1 in
-        -u | --user )           shift
-                                name=$1
-                                ;;
-        -p1 | --pass1 )         shift
-                                pass1=$1
-                                ;;
-        -p2 | --pass2 )         shift
-                                pass2=$1
-                                ;;
-        -h | --help )           usage
-                                exit
-                                ;;
-        * )                     usage
-                                exit 1
-    esac
-    shift
+### Retrieve information for new user
+tput setaf $CYAN; echo "Please enter the username for the new sudo user:"
+tput setaf $MAGENTA;
+while [[ -z "$NAME" ]]
+do
+    read -p ">> " NAME
 done
-if [[ -z "$name" || -z "$pass1" || -z "$pass2"  ]]; then
-	usage
-else
-useradd -s /bin/bash -d /home/$name/ -m -G sudo $name
-passwd $name <<EOF
-$pass1
-$pass2
+tput setaf $CYAN; echo "Please enter the password for the new sudo user:"
+tput setaf $MAGENTA;
+while [[ -z "$PASS1" ]]
+do
+    read -s -p ">> " PASS1
+done
+tput setaf $CYAN; echo "Please enter the password again:"
+tput setaf $MAGENTA;
+while [[ -z "$PASS2" ]]
+do
+    read -s -p ">> " PASS2
+done
+
+tput setaf $BLUE;
+useradd -s /bin/bash -d /home/$NAME/ -m -G sudo $NAME
+passwd $NAME <<EOF
+$PASS1
+$PASS2
 EOF
 fi
