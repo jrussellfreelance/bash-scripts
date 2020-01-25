@@ -1,12 +1,18 @@
 ## Bash Scripts
-This is a collection of bash scripts I've written to manage my servers and save time when performing various tasks.  Basically every one of these scripts was written while working with Ubuntu, so keep that in mind.  Also, the scripts related to PHP assume version 7.2.
+I have completely started from scratch, and have chosen to rebuild my script base.
 
-I have separated the scripts by their general function.  If you inspect any particular script, I give a brief explanation of what the script does.
+I am trying a new technique where I just write scripts for my every day tasks and processes.
 
-A lot of the scripts reference files in the `templates` directory in a relative way, i.e. `../templates/php-fpm/phpfpm.conf`, so be aware of that.
-
-Some notable scripts in this repository:
-
-* `topten.sh` script in `system` folder - a script that uses associative arrays to calculate resource usage over a specified amount of time.
-* Wordpress instance deployment scripts
-* Nginx config generation scripts
+scripts:
+ - automation-friendly:
+    - `create-sudo-user-auto.sh` - A command line utility for quickly creating a sudo user
+ - install-scripts:
+    - `install-homebrew.sh` - A script that installs homebrew
+    - `install-node12.sh` - A script that installs Node 12 LTS
+    - `install-the-basics.sh` - A script that installs a basic set of tools
+    - `install-yarn.sh` - A script that installs yarn
+ - setup-scripts:
+    - `create-sudo-user.sh` - A script that creates a sudo user
+    - `setup-apt.sh` - A script that configures apt after initial login
+ - web-server-scripts:
+    - `configure-certbot.sh` - A command line utility for installing and running certbot
