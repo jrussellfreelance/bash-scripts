@@ -7,6 +7,7 @@ scripts:
  - automation-friendly:
     - `create-sudo-user-auto.sh` - A command line utility for quickly creating a sudo user
  - install-scripts:
+    - `install-docker.sh` - A script that installs docker
     - `install-homebrew.sh` - A script that installs homebrew
     - `install-node12.sh` - A script that installs Node 12 LTS
     - `install-the-basics.sh` - A script that installs a basic set of tools and common dependencies
@@ -14,5 +15,6 @@ scripts:
  - setup-scripts:
     - `create-sudo-user.sh` - A script that creates a sudo user
     - `setup-apt.sh` - A script that configures apt after initial login
+    - `setup-ols.sh` - A script that installs OpenLiteSpeed and configures it for usage
  - web-server-scripts:
     - `configure-certbot.sh` - A command line utility for installing and running certbot
