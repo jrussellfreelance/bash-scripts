@@ -37,4 +37,3 @@ passwd $NAME <<EOF
 $PASS1
 $PASS2
 EOF
-fi
