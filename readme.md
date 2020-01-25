@@ -9,7 +9,7 @@ scripts:
  - install-scripts:
     - `install-homebrew.sh` - A script that installs homebrew
     - `install-node12.sh` - A script that installs Node 12 LTS
-    - `install-the-basics.sh` - A script that installs a basic set of tools
+    - `install-the-basics.sh` - A script that installs a basic set of tools and common dependencies
     - `install-yarn.sh` - A script that installs yarn
  - setup-scripts:
     - `create-sudo-user.sh` - A script that creates a sudo user
