@@ -1,0 +1,4 @@
+server {
+    server_name sub.domain.ext;
+    return 301 $scheme://domain.ext$request_uri;
+}
