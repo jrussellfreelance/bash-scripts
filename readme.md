@@ -6,6 +6,8 @@ I am trying a new technique where I just write scripts for my every day tasks an
 scripts:
  - automation-friendly:
     - `create-sudo-user-auto.sh` - A command line utility for quickly creating a sudo user
+ - git-scripts:
+    - `recursive-git-clone.sh` - A script that recursively clones git repositories
  - install-scripts:
     - `install-docker.sh` - A script that installs docker
     - `install-homebrew.sh` - A script that installs homebrew
