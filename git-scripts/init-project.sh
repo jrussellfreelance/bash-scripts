@@ -6,7 +6,7 @@
 
 usage()
 {
-    echo 'bash init-project.sh -d "/path/to/project" -o "https://github.com/JacFearsome/bash-scripts.git"'
+    echo 'bash init-project.sh -d /path/to/project -o https://github.com/JacFearsome/bash-scripts.git'
 }
 
 ##### Main
