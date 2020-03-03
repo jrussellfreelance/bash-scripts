@@ -12,9 +12,12 @@ scripts:
  - install-scripts:
     - `install-docker.sh` - A script that installs docker
     - `install-homebrew.sh` - A script that installs homebrew
+    - `install-mongo.sh` - A script that installs MongoDB
     - `install-node12.sh` - A script that installs Node 12 LTS
     - `install-the-basics.sh` - A script that installs a basic set of tools and common dependencies
     - `install-yarn.sh` - A script that installs yarn
+ - raspberrypi-scripts:
+    - `setup-samba.sh` - A script that guides you through setting up a samba share
  - setup-scripts:
     - `create-sudo-user.sh` - A script that creates a sudo user
     - `setup-apt.sh` - A script that configures apt after initial login
