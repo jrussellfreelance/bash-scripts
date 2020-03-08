@@ -1,7 +1,7 @@
 #!/bin/bash
 # Designed for Ubuntu
 # install-docker.sh - Installs docker and docker-compose
-apt remove remove docker docker-engine docker.io containerd runc
+apt remove docker docker-engine docker.io containerd runc
 apt  install \
     apt-transport-https \
     ca-certificates \
