@@ -22,6 +22,5 @@ scripts:
     - `create-sudo-user.sh` - A script that creates a sudo user
     - `setup-apt.sh` - A script that configures apt after initial login
     - `setup-ols.sh` - A script that installs OpenLiteSpeed and configures it for usage
-    - `setup-samba.sh` - A script that sets up an external drive as a samba share
  - web-server-scripts:
     - `configure-certbot.sh` - A command line utility for installing and running certbot
