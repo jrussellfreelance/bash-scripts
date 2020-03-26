@@ -7,5 +7,5 @@ echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
 source ~/.bash_profile
 # Install gcc, attempting to install patchelf through apt first as a dependency
 sudo apt update
-sudo apt install patchelf
+sudo apt install patchelf -y
 brew install gcc

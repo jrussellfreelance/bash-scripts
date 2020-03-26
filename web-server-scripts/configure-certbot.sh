@@ -47,7 +47,7 @@ case $CHOICE in
 			read -p "Cloudflare Global API Key >> " CF_GLOBAL
 			done
 
-			cat <<EOF>> ~/.secrets/certbot/cloudflare.ini
+			cat <<EOF >> ~/.secrets/certbot/cloudflare.ini
 # Cloudflare API credentials used by Certbot
 dns_cloudflare_email = $CF_EMAIL
 dns_cloudflare_api_key = $CF_GLOBAL

@@ -16,6 +16,10 @@ while [[ -z "$USR" ]]
 do
 read -p "enter mount user  >> " USR
 done
+while [[ -z "$NAM" ]]
+do
+read -p "enter mount name  >> " NAM
+done
 mkdir -p $PTH
 # Mount point
 mount -t ext4 $MOUNT $PTH
@@ -26,8 +30,8 @@ apt update
 apt -y install samba
 # Set password for new user, it will prompt you
 smbpasswd -a $USR
-echo "[mount]
-PTH = $PTH
+echo "[$NAM]
+path = $PTH
 valid users = $USR
 read only = no
 " >> /etc/samba/smb.conf
