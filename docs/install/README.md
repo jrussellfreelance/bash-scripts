@@ -28,6 +28,15 @@ Usage:
 ```bash
 curl -sSL https://scriptdeliver.com/install-homebrew | bash
 ```
+### Install LEMP Stack
+> Tested on Ubuntu 18.04
+
+This script installs nginx, certbot, mysql, and php-fpm onto your server.
+
+Usage:
+```bash
+bash <(curl -sSL https://scriptdeliver.com/install-lemp)
+```
 ### Install MongoDB 3.2
 > Tested on Ubuntu 16.04
 
