@@ -10,6 +10,7 @@ YELLOW=3
 BLUE=4
 MAGENTA=5
 CYAN=6
+WHITE=7
 
 ### Retrieve information for new user
 tput setaf $CYAN; echo "Please enter the username for the new sudo user:"
@@ -37,3 +38,4 @@ passwd $NAME <<EOF
 $PASS1
 $PASS2
 EOF
+tput setaf $WHITE;

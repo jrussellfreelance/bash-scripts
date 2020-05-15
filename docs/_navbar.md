@@ -1,0 +1,7 @@
+* [Home](/)
+* [Automation Friendly](/auto/)
+* [Git](/git/)
+* [Install](/install/)
+* [Raspberry Pi](/raspberrypi/)
+* [Setup](/setup/)
+* [Web](/web/)
