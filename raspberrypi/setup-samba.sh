@@ -1,9 +1,20 @@
 #!/bin/bash
-# Designed on Ubuntu 18.04 32-bit for a raspberrypi
-# run as sudo
+# Tested on Ubuntu 18.04 32-bit for a Raspberry Pi
+# This script guides you through setting up a samba share.
+### Assign Color Variables
+BLACK=0
+RED=1
+GREEN=2
+YELLOW=3
+BLUE=4
+MAGENTA=5
+CYAN=6
+WHITE=7
+
 # Grab mountpoint, mount path and mount user
-echo " >> printing available drives for you << "
+tput setaf $CYAN; echo " >> printing available drives for you << "
 fdisk -l
+tput setaf $MAGENTA;
 while [[ -z "$MOUNT" ]]
 do
 read -p "enter mount point >> " MOUNT
@@ -20,22 +31,24 @@ while [[ -z "$NAM" ]]
 do
 read -p "enter mount name  >> " NAM
 done
-mkdir -p $PTH
+tput setaf $CYAN; 
+sudo mkdir -p $PTH
 # Mount point
-mount -t ext4 $MOUNT $PTH
+sudo mount -t ext4 $MOUNT $PTH
 # Add USR
-useradd -d $PTH -g sudo $USR
+sudo useradd -d $PTH -g sudo $USR
 # Install samba
-apt update
-apt -y install samba
+sudo apt update
+sudo apt -y install samba
 # Set password for new user, it will prompt you
-smbpasswd -a $USR
+sudo smbpasswd -a $USR
 echo "[$NAM]
 path = $PTH
 valid users = $USR
 read only = no
 " >> /etc/samba/smb.conf
 # Restart smb service
-systemctl restart smbd
+sudo systemctl restart smbd
 # Add to fstab
-echo "$MOUNT           $PTH    ext4       rw,defaults         0      0" >> /etc/fstab
+sudo echo "$MOUNT           $PTH    ext4       rw,defaults         0      0" >> /etc/fstab
+tput setaf $WHITE;

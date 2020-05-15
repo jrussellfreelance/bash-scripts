@@ -1,6 +1,6 @@
 #!/bin/bash
 # Designed for Ubuntu
-# configure-certbot.sh
+# This script allows you to quickly install and configure certbot.
 
 ### Assign Color Variables
 BLACK=0
