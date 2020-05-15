@@ -33,8 +33,8 @@ do
 done
 
 tput setaf $BLUE;
-useradd -s /bin/bash -d /home/$NAME/ -m -G sudo $NAME
-passwd $NAME <<EOF
+sudo useradd -s /bin/bash -d /home/$NAME/ -m -G sudo $NAME
+sudo passwd $NAME <<EOF
 $PASS1
 $PASS2
 EOF

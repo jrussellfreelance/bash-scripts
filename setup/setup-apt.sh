@@ -1,9 +1,9 @@
 #!/bin/bash
 # Designed for Ubuntu
 # Update the apt cache
-apt update
+sudo apt update
 # Perform updates
-apt -y upgrade
-apt -y dist-upgrade
+sudo apt -y upgrade
+sudo apt -y dist-upgrade
 # Remove uneeded packages
-apt -y autoremove
+sudo apt -y autoremove
