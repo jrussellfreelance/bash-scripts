@@ -1,5 +1,5 @@
 #!/bin/bash
-# Designed for Ubuntu
+# Tested on Ubuntu 16.04 LTS
 # This script installs MongoDB 3.2.
 # Add MongoDB apt key and source
 wget -qO - https://www.mongodb.org/static/pgp/server-3.2.asc | sudo apt-key add -

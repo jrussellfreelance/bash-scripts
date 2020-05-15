@@ -1,6 +1,3 @@
-# Bash Scripts by Jesse Russell
-> Designed for Ubuntu
-## Contents
 * [Automation Scripts](/automation/)
 * [Git Scripts](/git/)
 * [Install Scripts](/install/)

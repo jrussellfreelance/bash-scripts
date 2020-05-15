@@ -1,5 +1,5 @@
 #!/bin/bash
-# Designed for Ubuntu 16.04
+# Tested on Ubuntu 16.04 LTS
 # This script installs Powershell Core on Ubuntu 16.04.
 wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb

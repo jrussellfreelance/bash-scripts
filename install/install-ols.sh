@@ -1,5 +1,5 @@
 #!/bin/bash
-# Designed for Ubuntu
+# Tested on Ubuntu 18.04 LTS
 # This script installs and configures OpenLiteSpeed.
 # One click install script
 wget --no-check-certificate https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh
