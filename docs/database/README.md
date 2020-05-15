@@ -6,5 +6,5 @@ This script creates a new MongoDB database and database user.
 
 Usage:
 ```bash
-bash <(curl -sSL https://scripty.me/setup-samba)
+bash <(curl -sSL https://scripty.me/new-mongo)
 ```
