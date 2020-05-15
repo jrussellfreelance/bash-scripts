@@ -1,6 +1,6 @@
 #!/bin/bash
 # Designed for Ubuntu 18.04
-# This script installs nginx, certbot, mysql, and php-fpm onto your server.
+# This script installs Nginx, Certbot, MySQL, and php-fpm onto your server.
 echo "A LEMP web server set up script"
 echo "Installing Nginx..."
 sudo apt update

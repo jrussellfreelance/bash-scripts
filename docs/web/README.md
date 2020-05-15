@@ -6,5 +6,5 @@ This script allows you to quickly install and configure certbot.
 
 Usage:
 ```bash
-bash <(curl -sSL https://scriptdeliver.com/configure-certbot)
+bash <(curl -sSL https://scripty.me/configure-certbot)
 ```
