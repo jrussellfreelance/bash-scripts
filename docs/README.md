@@ -1,9 +1,8 @@
-# Bash Scripts by Jesse Russell
-> Designed for Ubuntu
+> These scripts were designed for and tested on Ubuntu
 ## Contents
-* [Automation Scripts](/automation/)
-* [Git Scripts](/git/)
-* [Install Scripts](/install/)
-* [Raspberry Pi Scripts](/raspberrypi/)
-* [Setup Scripts](/setup/)
-* [Web Scripts](/web/)
+* ### [Automation Scripts](/automation/)
+* ### [Git Scripts](/git/)
+* ### [Install Scripts](/install/)
+* ### [Raspberry Pi Scripts](/raspberrypi/)
+* ### [Setup Scripts](/setup/)
+* ### [Web Scripts](/web/)

@@ -1,12 +1,12 @@
 #!/bin/bash
-# Designed for Ubuntu
-# create-sudo-user-auto.sh - A script that creates a new sudo user via script arguments
+# Tested on Ubuntu 18.04 LTS
+# This script creates a new sudo user via script arguments.
 
 ##### Functions
 
 usage()
 {
-    echo "sudo bash create-sudo-user -u user -p1 password -p2 password"
+    echo "sudo bash create-sudo-user-auto.sh -u user -p1 password -p2 password"
 }
 
 ##### Main
@@ -37,8 +37,8 @@ done
 if [[ -z "$name" || -z "$pass1" || -z "$pass2"  ]]; then
 	usage
 else
-useradd -s /bin/bash -d /home/$name/ -m -G sudo $name
-passwd $name <<EOF
+sudo useradd -s /bin/bash -d /home/$name/ -m -G sudo $name
+sudo passwd $name <<EOF
 $pass1
 $pass2
 EOF

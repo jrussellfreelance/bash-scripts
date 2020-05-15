@@ -1,5 +1,5 @@
 # Raspberry Pi Scripts
-### Setup Samba Share
+### Setup a Samba Share
 > Tested on Ubuntu 18.04 Raspberry Pi
 
 This script guides you through setting up a samba share.

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Designed for Ubuntu
+# Tested on Ubuntu 18.04 LTS
 # This script allows you to quickly install and configure certbot.
 
 ### Assign Color Variables
@@ -10,6 +10,7 @@ YELLOW=3
 BLUE=4
 MAGENTA=5
 CYAN=6
+WHITE=7
 
 while [ -z "$CHOICE" ]; do
 tput setaf $MAGENTA;
@@ -116,3 +117,4 @@ EOF
 
 esac
 done
+tput setaf $WHITE;
