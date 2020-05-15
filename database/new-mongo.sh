@@ -23,7 +23,7 @@ mongo <<EOF
 use $NEWDB
 db.createUser( { user: '$NEWUSER',
                  pwd: '$NEWPWD',
-                 roles: [ { role: "readWrite", db: '$NEWDB' } ]
+                 roles: [ { role: 'readWrite', db: '$NEWDB' } ]
              } )
 exit
 EOF
