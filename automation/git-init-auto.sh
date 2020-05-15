@@ -40,7 +40,7 @@ else
 cd $dir
 git init
 git add .
-git commit -am $commit
+git commit -m $commit
 git remote add origin $origin
 git push origin master
 fi

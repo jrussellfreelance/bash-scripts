@@ -16,7 +16,7 @@ This script initializes and configures a new git project for a folder.
 
 Download:
 ```bash
-wget https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/automation/git-init-auto.sh.sh
+wget https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/automation/git-init-auto.sh
 ```
 
 Usage:
