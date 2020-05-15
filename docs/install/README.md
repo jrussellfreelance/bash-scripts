@@ -1,5 +1,7 @@
 # Install Scripts
 ### Install the Basics
+> Tested on Ubuntu 18.04
+
 This script installs some basic Ubuntu goodies.
 
 Usage:
@@ -7,6 +9,8 @@ Usage:
 curl -sSL https://scriptdeliver.com/install-basics | sudo bash
 ```
 ### Install Docker & Docker Compose
+> Tested on Ubuntu 18.04
+
 This script installs docker and docker-compose.
 
 Usage:

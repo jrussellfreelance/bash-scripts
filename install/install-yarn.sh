@@ -1,6 +1,7 @@
 #!/bin/bash
-# Install Yarn
+# Designed for Ubuntu 18.04
+# This script installs Yarn.
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-apt update
-apt install -y yarn
+sudo apt update
+sudo apt install -y yarn
