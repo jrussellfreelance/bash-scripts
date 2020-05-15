@@ -1,6 +1,7 @@
 #!/bin/bash
+# Tested on Ubuntu 18.04 LTS
 # This script installs some basic Ubuntu goodies.
-apt install -y \
+sudo apt install -y \
 git \
 nano \
 curl \
