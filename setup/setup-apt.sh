@@ -1,5 +1,6 @@
 #!/bin/bash
-# Designed for Ubuntu
+# Tested on Ubuntu 18.04 LTS
+# This script updates the apt cache, performs upgrades, and removes unneeded packages.
 # Update the apt cache
 sudo apt update
 # Perform updates

@@ -5,7 +5,7 @@
 This script updates the apt cache, performs upgrades, and removes unneeded packages.
 
 Usage:
-```sh
+```bash
 bash <(curl -sSL https://scriptdeliver.com/setup-apt)
 ```
 ### Create Sudo User
@@ -16,6 +16,6 @@ This script condenses the few lines of bash needed for creating a new sudo user 
 It prompts the current user for the new user's information.
 
 Usage:
-```sh
+```bash
 bash <(curl -sSL https://scriptdeliver.com/create-sudo-user)
 ```

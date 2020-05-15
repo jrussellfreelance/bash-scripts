@@ -1,6 +1,6 @@
 #!/bin/bash
 # Designed for Ubuntu
-# install-docker.sh - Installs docker and docker-compose
+# This script installs docker and docker-compose
 # install docker using script
 curl -sSL https://get.docker.com | sudo bash
 # download and install docker-compose

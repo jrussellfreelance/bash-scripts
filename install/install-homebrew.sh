@@ -1,5 +1,7 @@
 #!/bin/bash
 # Designed for Ubuntu
+# This script downloads homebrew and adds it to your PATH.
+# It also installs gcc through brew as well as the patchelf apt package.
 # Download and run install script
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 # Add brew to your bash profile and update

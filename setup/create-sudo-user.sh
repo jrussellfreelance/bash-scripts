@@ -1,7 +1,7 @@
 #!/bin/bash
-# Designed for Ubuntu
-# create-sudo-user.sh - A script that creates a new sudo user via prompts
-
+# Tested on Ubuntu 18.04 LTS
+# This script condenses the few lines of bash needed for creating a new sudo user into a single command.
+# It prompts the current user for the new user's information.
 ### Assign Color Variables
 BLACK=0
 RED=1
