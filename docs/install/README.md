@@ -1,20 +1,13 @@
 # Install Scripts
-<!--panels:start-->
-<!--div:title-panel-->
-
 ### Install the Basics
 > Tested on Ubuntu 18.04
 
-<!--div:left-panel-->
-
 This script installs some basic Ubuntu goodies.
 
-<!--div:right-panel-->
 Usage:
 ```bash
 curl -sSL https://scripty.me/install-basics | sudo bash
 ```
-<!--panels:end-->
 
 ### Install Docker & Docker Compose
 > Tested on Ubuntu 18.04
