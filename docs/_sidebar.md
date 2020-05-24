@@ -1,5 +1,5 @@
-* [Automation Scripts](/automation/)
 * [Database Scripts](/database/)
+* [Automation Scripts](/automation/)
 * [Git Scripts](/git/)
 * [Install Scripts](/install/)
 * [Raspberry Pi Scripts](/raspberrypi/)
