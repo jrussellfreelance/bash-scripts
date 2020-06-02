@@ -6,5 +6,5 @@ This script guides you through setting up a samba share.
 
 Usage:
 ```bash
-bash <(curl -sSL https://scripty.me/setup-samba)
+bash <(curl -sSL https://jrussell.sh/setup-samba)
 ```

@@ -6,7 +6,7 @@ This script updates the apt cache, performs upgrades, and removes unneeded packa
 
 Usage:
 ```bash
-bash <(curl -sSL https://scripty.me/setup-apt)
+bash <(curl -sSL https://jrussell.sh/setup-apt)
 ```
 ### Create Sudo User
 > Tested on Ubuntu 18.04
@@ -17,5 +17,5 @@ It prompts the current user for the new user's information.
 
 Usage:
 ```bash
-bash <(curl -sSL https://scripty.me/create-sudo-user)
+bash <(curl -sSL https://jrussell.sh/create-sudo-user)
 ```
