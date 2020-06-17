@@ -9,7 +9,6 @@ while [[ -z "$appport" ]]
 do
     read -p "port   >> " appport
 done
-apt install nginx python-certbot-nginx -y
 cd /etc/nginx/sites-available/
 touch $domain
 echo "
