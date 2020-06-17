@@ -7,11 +7,10 @@ do
 done
 while [[ -z "$appport" ]]
 do
-    read -p "port   >>" appport
+    read -p "port   >> " appport
 done
-sudo apt install letsencrypt -y
+sudo apt install nginx python-certbot-nginx -y
 certbot certonly --rsa-key-size 2048 --standalone --agree-tos --no-eff-email --email jesse@jrussell.io -d ${domain}
-sudo apt install nginx -y
 cd /etc/nginx/sites-available/
 touch $domain
 echo "

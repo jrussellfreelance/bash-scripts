@@ -8,3 +8,5 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 # enable and start docker
 sudo systemctl start docker && sudo systemctl enable docker
+# add current user to docker group
+sudo usermod -aG docker $(whoami)
