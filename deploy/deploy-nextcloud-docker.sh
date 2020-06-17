@@ -8,6 +8,7 @@ done
 mkdir -p nextcloud/{apps,config,data}
 cd nextcloud
 docker run  --name nextcloud -d \
+-p $hostport:80 \
 -v $(pwd):/var/www/html \
 -v apps:/var/www/html/custom_apps \
 -v config:/var/www/html/config \
