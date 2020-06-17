@@ -1,4 +1,6 @@
 #!/bin/bash
+# Tested on Ubuntu 18.04
+# This script creates an nginx reverse proxy
 while [[ -z "$domain" ]]
 do
     read -p "domain >> " domain

@@ -8,15 +8,15 @@ echo A MongoDB Database Creation Script
 # Grab new database name, user, and password
 while [[ -z "$NEWDB" ]]
 do
-    read -p "New database name: " NEWDB
+    read -p "database name >> " NEWDB
 done
 while [[ -z "$NEWUSER" ]]
 do
-    read -p "New database user: " NEWUSER
+    read -p "database user >> " NEWUSER
 done
 while [[ -z "$NEWPWD" ]]
 do
-    read -s -p "New database user's password: " NEWPWD
+    read -s -p "database user pass >> " NEWPWD
 done
 # Create database and then user
 mongo <<EOF
