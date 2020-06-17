@@ -1,4 +1,15 @@
 # Setup Scripts
+### Add SSH Key
+> Tested on Ubuntu 18.04
+
+This script adds an SSH key to the server for the current user.
+
+It prompts the current user for the public SSH key contents.
+
+Usage:
+```bash
+bash <(curl -sSL https://jrussell.sh/add-ssh-key)
+```
 ### Setup Apt
 > Tested on Ubuntu 18.04
 
