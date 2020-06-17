@@ -16,3 +16,4 @@ docker create \
     -p $hostport:80 \
     shaarli/shaarli:master
 docker start shaarli
+docker exec -ti shaarli chown -R nginx:nginx /var/www/shaarli/data
