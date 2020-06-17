@@ -94,7 +94,7 @@ EOF
 			read -p "
 			Domain >> " DOMAIN
 			done
-			certbot certonly \
+			certbot \
 			  --nginx \
 			  -d $DOMAIN
 			;;
