@@ -1,6 +1,6 @@
 #!/bin/bash
-# Designed for Ubuntu 18.04
-# This script deploys Shaarli through docker
+# Tested on Ubuntu 18.04
+# This script deploys Shaarli via docker
 while [[ -z "$hostport" ]]
 do
     read -p "host port >> " hostport
