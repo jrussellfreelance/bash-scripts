@@ -14,10 +14,10 @@ touch $domain
 echo "
 server {
     listen 80;
+    listen [::]:80;
     server_name ${domain};
     location / {
       proxy_pass http://127.0.0.1:${appport};
-      proxy_set_header X-Forwarded-For "'$remote_addr'";
     }
 }
 " > $domain
