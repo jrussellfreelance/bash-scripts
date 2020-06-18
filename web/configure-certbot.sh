@@ -35,7 +35,6 @@ case $CHOICE in
 			add-apt-repository ppa:certbot/certbot
 			apt-get update
 			apt-get install certbot python3-certbot-dns-cloudflare -y
-
 			mkdir -p ~/.secrets/certbot/
 
 			while [[ -z "$CF_EMAIL" ]]
@@ -54,7 +53,6 @@ dns_cloudflare_email = $CF_EMAIL
 dns_cloudflare_api_key = $CF_GLOBAL
 EOF
 			chmod 600 ~/.secrets/certbot/cloudflare.ini
-
 			;;
 	    	[nN]) 
 			apt-get install software-properties-common

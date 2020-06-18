@@ -23,6 +23,6 @@ server {
 " > $domain
 ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/
 nginx -t
+certbot --nginx -d $domain
 systemctl restart nginx
-systemctl enable nginx
 echo Finished!

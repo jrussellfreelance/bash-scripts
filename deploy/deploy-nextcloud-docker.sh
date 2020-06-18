@@ -10,9 +10,14 @@ while [[ -z "$domain" ]]
 do
     read -p "nextcloud domain >> " domain
 done
-# Generate MySQL passwords
-mysql_root_pwd=$(openssl rand -base64 12)
-mysql_db_pwd=$(openssl rand -base64 12)
+while [[ -z "$mysql_db_pwd" ]]
+do
+    read -s -p "database user pass >> " mysql_db_pwd
+done
+while [[ -z "$mysql_root_pwd" ]]
+do
+    read -s -p "database root pass >> " mysql_root_pwd
+done
 # Create linked directories
 mkdir -p nextcloud/app
 cd nextcloud
@@ -69,3 +74,5 @@ sed -i "s/@@@mysql_db_pwd@@@/${mysql_db_pwd}/g" docker-compose.yml
 
 # start docker compose stack
 docker-compose up -d
+# docker exec nextcloud-app sed -i "s/http\:\/\/\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\:${hostport}/https\:\/\/${domain}/g" config/config.php
+# docker exec nextcloud-app sed -i "s/\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\:${hostport}/${domain}/g" config/config.php
