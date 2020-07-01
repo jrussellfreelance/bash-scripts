@@ -1,6 +1,17 @@
 #!/bin/bash
 # Tested on Ubuntu 18.04
 # This script creates an nginx reverse proxy
+### Assign Color Variables
+BLACK=0
+RED=1
+GREEN=2
+YELLOW=3
+BLUE=4
+MAGENTA=5
+CYAN=6
+WHITE=7
+
+tput setaf $CYAN;
 while [[ -z "$domain" ]]
 do
     read -p "domain >> " domain
@@ -9,6 +20,7 @@ while [[ -z "$appport" ]]
 do
     read -p "port   >> " appport
 done
+tput setaf $YELLOW;
 cd /etc/nginx/sites-available/
 touch $domain
 echo "
@@ -31,4 +43,7 @@ ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/
 nginx -t
 certbot --nginx -d $domain
 systemctl restart nginx
-echo Finished!
+
+tput setaf $MAGENTA;
+echo ">> https://$domain <<"!
+tput setaf $WHITE;
