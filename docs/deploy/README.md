@@ -9,6 +9,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/deploy-nextcloud-docker)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/deploy/deploy-nextcloud-docker.sh)
+
 ### Deploy Portainer to Docker
 > Tested on Ubuntu 18.04
 
@@ -18,6 +21,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/deploy-portainer-docker)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/deploy/deploy-portainer-docker.sh)
+
 ### Deploy Shaarli to Docker
 > Tested on Ubuntu 18.04
 
@@ -29,6 +35,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/deploy-shaarli-docker)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/deploy/deploy-shaarli-docker.sh)
+
 ### Deploy WordPress to Docker
 > Tested on Ubuntu 18.04
 
@@ -40,6 +49,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/deploy-wordpress-docker)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/deploy/deploy-wordpress-docker.sh)
+
 ### Deploy WordPress with OpenLiteSpeed
 > Tested on Ubuntu 18.04
 
@@ -51,3 +63,5 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/deploy-wordpress-ols)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/deploy/deploy-wordpress-ols.sh)

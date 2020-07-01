@@ -9,6 +9,8 @@ Usage:
 curl -sSL https://jrussell.sh/install-basics | sudo bash
 ```
 
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-basics.sh)
+
 ### Install Docker & Docker Compose
 > Tested on Ubuntu 18.04
 
@@ -18,6 +20,9 @@ Usage:
 ```bash
 curl -sSL https://jrussell.sh/install-docker | sudo bash
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-docker.sh)
+
 ### Install Homebrew
 > Tested on Ubuntu 18.04
 
@@ -29,6 +34,9 @@ Usage:
 ```bash
 curl -sSL https://jrussell.sh/install-homebrew | bash
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-homebrew.sh)
+
 ### Install LEMP Stack
 > Tested on Ubuntu 18.04
 
@@ -38,6 +46,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/install-lemp)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-lemp.sh)
+
 ### Install MongoDB 3.2
 > Tested on Ubuntu 16.04
 
@@ -47,6 +58,9 @@ Usage:
 ```bash
 curl -sSL https://jrussell.sh/install-mongo3 | sudo bash
 ```
+
+[Raw Script Contents]()
+
 ### Install Node.js 12
 > Tested on Ubuntu 18.04
 
@@ -56,6 +70,9 @@ Usage:
 ```bash
 curl -sSL https://jrussell.sh/install-node12 | sudo bash
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-mongo3.sh)
+
 ### Install OpenLiteSpeed
 > Tested on Ubuntu 18.04
 
@@ -65,6 +82,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/install-ols)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-ols.sh)
+
 ### Install Powershell Core
 > Tested on Ubuntu 16.04
 
@@ -75,10 +95,16 @@ Ubuntu 16.04 Usage:
 curl -sSL https://jrussell.sh/install-pwsh16 | sudo bash
 ```
 
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-pwsh16.sh)
+
+
 Ubuntu 18.04 Usage:
 ```bash
 curl -sSL https://jrussell.sh/install-pwsh18 | sudo bash
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-pwsh18.sh)
+
 ### Install Yarn
 This script installs Yarn.
 
@@ -86,3 +112,5 @@ Usage:
 ```bash
 curl -sSL https://jrussell.sh/install-yarn | sudo bash
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-yarn.sh)

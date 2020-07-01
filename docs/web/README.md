@@ -8,6 +8,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/configure-certbot)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/web/configure-certbot.sh)
+
 ### Create Nginx Reverse Proxy
 > Tested on Ubuntu 18.04
 
@@ -17,3 +20,5 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/create-nginx-proxy)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/web/create-nginx-proxy.sh)

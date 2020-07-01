@@ -8,3 +8,5 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/setup-samba)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/raspberrypi/setup-samba.sh)

@@ -10,6 +10,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/add-ssh-key)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/setup/add-ssh-key.sh)
+
 ### Setup Apt
 > Tested on Ubuntu 18.04
 
@@ -19,6 +22,9 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/setup-apt)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/setup/setup-apt.sh)
+
 ### Create Sudo User
 > Tested on Ubuntu 18.04
 
@@ -30,3 +36,5 @@ Usage:
 ```bash
 bash <(curl -sSL https://jrussell.sh/create-sudo-user)
 ```
+
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/setup/create-sudo-user.sh)
