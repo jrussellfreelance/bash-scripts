@@ -31,7 +31,7 @@ case $CHOICE in
 	    tput setaf $BLUE;
 	    case $ADDON in
 	    	[cC]) 
-			apt-get install software-properties-common
+			apt-get install software-properties-common -y
 			add-apt-repository ppa:certbot/certbot
 			apt-get update
 			apt-get install certbot python3-certbot-dns-cloudflare -y
@@ -55,7 +55,7 @@ EOF
 			chmod 600 ~/.secrets/certbot/cloudflare.ini
 			;;
 	    	[nN]) 
-			apt-get install software-properties-common
+			apt-get install software-properties-common -y
 			add-apt-repository ppa:certbot/certbot
 			apt-get update
 			apt-get install certbot python3-certbot-nginx -y

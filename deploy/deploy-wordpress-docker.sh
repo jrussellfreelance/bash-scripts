@@ -57,7 +57,6 @@ services:
        WORDPRESS_DB_NAME: wordpress
      working_dir: /var/www/html
      volumes:
-       - ./wp-content:/var/www/html/wp-content
        - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 volumes:
     db_data: {}
