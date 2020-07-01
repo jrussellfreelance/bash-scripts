@@ -16,6 +16,7 @@ server {
     listen 80;
     listen [::]:80;
     server_name ${domain};
+    client_max_body_size 1024M;
     location / {
         proxy_pass http://127.0.0.1:${appport};
         proxy_http_version 1.1;
