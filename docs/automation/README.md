@@ -4,6 +4,8 @@
 
 This script creates a new sudo user via script arguments.
 
+> [Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/automation/create-sudo-user-auto.sh)
+
 Download:
 ```bash
 wget https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/automation/create-sudo-user-auto.sh
