@@ -10,17 +10,23 @@ while [[ -z "$domain" ]]
 do
     read -p "wordpress domain >> " domain
 done
-while [[ -z "$mysql_db_pwd" ]]
-do
-    read -s -p "database user pass >> " mysql_db_pwd
-done
-while [[ -z "$mysql_root_pwd" ]]
-do
-    read -s -p "database root pass >> " mysql_root_pwd
-done
+# Generate passwords
+mysql_db_pwd=$(date +%s | sha256sum | base64 | head -c 32 ; echo)
+mysql_root_pwd=$(date +%s | sha256sum | base64 | head -c 32 ; echo)
+
 # Create linked directories
 mkdir -p wordpress/$domain
 cd wordpress/$domain
+
+# Create uploads.ini
+cat <<'EOF' > uploads.ini
+file_uploads = On
+memory_limit = 64M
+upload_max_filesize = 64M
+post_max_size = 64M
+max_execution_time = 600
+EOF
+
 # Create docker-compose file
 cat <<'EOF' > docker-compose.yml
 version: '3.3'
@@ -49,6 +55,10 @@ services:
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: @@@mysql_db_pwd@@@
        WORDPRESS_DB_NAME: wordpress
+     working_dir: /var/www/html
+     volumes:
+       - ./wp-content:/var/www/html/wp-content
+       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 volumes:
     db_data: {}
 EOF
