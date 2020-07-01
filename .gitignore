@@ -1,3 +1,5 @@
 legacy/
 staging/
 snippets/
+
+.DS_Store
