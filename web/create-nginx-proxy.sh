@@ -45,5 +45,5 @@ certbot --nginx -d $domain
 systemctl restart nginx
 
 tput setaf $MAGENTA;
-echo ">> https://$domain <<"!
+echo ">> https://$domain <<"
 tput setaf $WHITE;
