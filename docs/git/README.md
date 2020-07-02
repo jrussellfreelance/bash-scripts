@@ -2,14 +2,14 @@
 ### Git Config
 > Tested on Ubuntu 18.04
 
-This script initializes git global settings.
+This script provides you with a simple menu system for setting git config values.
 
 Usage:
 ```bash
-bash <(curl -sSL https://jrussell.sh/git-config)
+bash <(curl -sSL https://jrussell.sh/configure-git)
 ```
 
-[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/git/git-config.sh)
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/git/configure-git.sh)
 
 ### Recursive Git Clone
 > Tested on Ubuntu 18.04
