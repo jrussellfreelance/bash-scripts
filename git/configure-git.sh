@@ -37,14 +37,9 @@ case $CHOICE in
     do
         read -p "        git name     >> " GIT_NAME
     done
-    while [[ -z "$GIT_PASSWORD" ]]
-    do
-        read -s -p "        git password >> " GIT_PASSWORD
-    done
     git config --global credential.username $GIT_USERNAME
     git config --global user.email $GIT_EMAIL
     git config --global user.name $GIT_NAME
-    git config --global user.password $GIT_PASSWORD
 ;;
 2)
     echo "";
@@ -60,14 +55,9 @@ case $CHOICE in
     do
         read -p "        git name     >> " GIT_NAME
     done
-    while [[ -z "$GIT_PASSWORD" ]]
-    do
-        read -s -p "        git password >> " GIT_PASSWORD
-    done
     git config credential.username $GIT_USERNAME
     git config user.email $GIT_EMAIL
     git config user.name $GIT_NAME
-    git config user.password $GIT_PASSWORD
 ;;
 3)
     while [[ -z "$GIT_URL" ]]
