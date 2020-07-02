@@ -72,7 +72,7 @@ case $CHOICE in
 3)
     while [[ -z "$GIT_URL" ]]
     do
-        read -p "remote origin url >> " $GIT_URL
+        read -p "        remote origin url >> " $GIT_URL
     done
     git remote set-url origin $GIT_URL
 ;;
