@@ -1,5 +1,5 @@
 # Git Scripts
-### Git Config
+### Configure Git Settings
 > Tested on Ubuntu 18.04
 
 This script provides you with a simple menu system for setting git config values.
