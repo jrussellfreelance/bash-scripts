@@ -55,7 +55,7 @@ bash <(curl -sSL https://jrussell.sh/deploy-wordpress-docker)
 ### Deploy WordPress with OpenLiteSpeed
 > Tested on Ubuntu 18.04
 
-This script deploys WordPress and connfigures OpenLiteSpeed as the server.
+This script deploys WordPress and configures OpenLiteSpeed as the server.
 
 It will prompt you for the domain, and will display the login information after it completes.
 
