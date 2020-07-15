@@ -34,9 +34,9 @@ done
 # Perform apt upgrades
 tput setaf $MAGENTA; echo ">> Running apt upgrades..."
 tput setaf $YELLOW;
-sudo apt update >>/dev/null
-sudo apt -y upgrade >>/dev/null
-sudo apt -y autoremove >>/dev/null
+sudo apt update
+sudo apt -y upgrade
+sudo apt -y autoremove
 
 
 # LSWS one click install with Wordpress
