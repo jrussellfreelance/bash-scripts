@@ -3,4 +3,4 @@ I have completely started from scratch, and have chosen to rebuild my script bas
 
 I am trying a new technique where I just write scripts for my every day tasks and processes.
 
-> [Script Directory](https://jacfearsome.github.io/bash-scripts/#/)
+> [Script Directory](https://jrussellfreelance.github.io/bash-scripts/#/)
