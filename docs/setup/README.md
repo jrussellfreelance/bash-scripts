@@ -14,7 +14,7 @@ bash <(curl -sSL https://jrussell.sh/add-ssh-key)
 [Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/setup/add-ssh-key.sh)
 
 ### Setup Apt
-> Tested on Ubuntu 18.04
+> Tested on Ubuntu 20.04
 
 This script updates the apt cache, performs upgrades, and removes unneeded packages.
 

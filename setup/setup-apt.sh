@@ -1,5 +1,5 @@
 #!/bin/bash
-# Tested on Ubuntu 18.04 LTS
+# Tested on Ubuntu 20.04 LTS
 # This script updates the apt cache, performs upgrades, and removes unneeded packages.
 # Update the apt cache
 sudo apt-get update
