@@ -59,7 +59,7 @@ Usage:
 curl -sSL https://jrussell.sh/install-mongo3 | sudo bash
 ```
 
-[Raw Script Contents]()
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-mongo3.sh)
 
 ### Install Node.js 12
 > Tested on Ubuntu 18.04
@@ -71,7 +71,7 @@ Usage:
 curl -sSL https://jrussell.sh/install-node12 | sudo bash
 ```
 
-[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-mongo3.sh)
+[Raw Script Contents](https://raw.githubusercontent.com/JacFearsome/bash-scripts/master/install/install-node12.sh)
 
 ### Install OpenLiteSpeed
 > Tested on Ubuntu 18.04
