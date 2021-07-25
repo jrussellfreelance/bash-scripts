@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Tested on Ubuntu 20.04 LTS
 # This script updates the apt cache, performs upgrades, and removes unneeded packages.
 # Update the apt cache

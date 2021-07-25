@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Designed for Ubuntu 18.04
 # This script installs Nginx, Certbot, MySQL, and php-fpm onto your server.
 echo "A LEMP web server set up script"

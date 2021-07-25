@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Tested on Ubuntu 18.04 LTS
 # This script installs Node.js 12.
 # Download and run Node.js install script

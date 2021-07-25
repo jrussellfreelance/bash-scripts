@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # This script installs Wordpress and OLS for a selfhosted server
 
 # Assign Color Variables
