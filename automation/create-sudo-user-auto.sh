@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Tested on Ubuntu 18.04 LTS
 # This script creates a new sudo user via script arguments.
 

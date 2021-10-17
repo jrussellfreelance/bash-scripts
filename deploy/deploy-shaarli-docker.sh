@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Tested on Ubuntu 18.04
 # This script deploys Shaarli via docker
 while [[ -z "$hostport" ]]

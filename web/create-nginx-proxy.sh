@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Tested on Ubuntu 18.04
 # This script creates an nginx reverse proxy
 ### Assign Color Variables

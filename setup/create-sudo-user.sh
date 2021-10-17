@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Tested on Ubuntu 18.04 LTS
 # This script condenses the few lines of bash needed for creating a new sudo user into a single command.
 # It prompts the current user for the new user's information.

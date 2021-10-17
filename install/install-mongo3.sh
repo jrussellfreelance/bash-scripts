@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Tested on Ubuntu 16.04 LTS
 # This script installs MongoDB 3.2.
 # Add MongoDB apt key and source

@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Designed for Ubuntu 18.04
 # This script creates a new MySQL database and database user.
 echo A MySQL Database Creation Script

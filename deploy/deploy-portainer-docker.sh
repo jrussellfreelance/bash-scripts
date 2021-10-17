@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Tested on Ubuntu 18.04
 # This script deploys Portainer via docker
 docker volume create portainer_data
