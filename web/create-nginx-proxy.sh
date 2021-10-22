@@ -13,6 +13,10 @@ MAGENTA=5
 CYAN=6
 WHITE=7
 
+# var init
+domain=
+appport=
+
 tput setaf $CYAN;
 while [[ -z "$domain" ]]
 do
