@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# set -euo pipefail
 
 # Tested on Ubuntu 18.04
 # This script creates an nginx reverse proxy
@@ -14,8 +14,8 @@ CYAN=6
 WHITE=7
 
 # var init
-domain=
-appport=
+# domain=''
+# appport=''
 
 tput setaf $CYAN;
 while [[ -z "$domain" ]]
