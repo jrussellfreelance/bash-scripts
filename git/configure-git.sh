@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 # Tested on Ubuntu 18.04 LTS
 # This script allows you to quickly configure Git.
