@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
+#!/bin/bash
 # Tested on Ubuntu 18.04 LTS
 # This script downloads homebrew and adds it to your PATH.
 # It also installs gcc through brew as well as the patchelf apt package.

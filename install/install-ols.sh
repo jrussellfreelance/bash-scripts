@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
+#!/bin/bash
 # Tested on Ubuntu 18.04 LTS
 # This script installs and configures OpenLiteSpeed.
 # One click install script

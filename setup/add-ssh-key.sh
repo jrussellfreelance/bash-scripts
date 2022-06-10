@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
+#!/bin/bash
 # Tested on Ubuntu 18.04
 # This script adds an SSH key to the server for the current user
 # Grab SSH key from user

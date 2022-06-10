@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 # Tested on Ubuntu 18.04
 # This script creates an nginx reverse proxy
 ### Assign Color Variables

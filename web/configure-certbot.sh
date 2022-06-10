@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 # Tested on Ubuntu 18.04 LTS
 # This script allows you to quickly install and configure certbot.
 

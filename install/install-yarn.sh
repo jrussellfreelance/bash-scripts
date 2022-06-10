@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
+#!/bin/bash
 # Tested on Ubuntu 18.04 LTS
 # This script installs Yarn.
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -

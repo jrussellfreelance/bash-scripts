@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
+#!/bin/bash
 # Tested on Ubuntu 18.04 32-bit for a Raspberry Pi
 # This script guides you through setting up a samba share.
 ### Assign Color Variables

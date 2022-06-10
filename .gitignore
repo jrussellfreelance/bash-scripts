@@ -1,5 +1,6 @@
 legacy/
 staging/
 snippets/
-
+in_devel/
+.history
 .DS_Store
