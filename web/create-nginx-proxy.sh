@@ -49,5 +49,6 @@ nginx -t
 systemctl restart nginx
 
 tput setaf $MAGENTA;
+echo ">> Config file: /etc/nginx/sites-available/$domain <<"
 echo ">> https://$domain <<"
 tput setaf $WHITE;
