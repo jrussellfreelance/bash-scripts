@@ -45,7 +45,7 @@ server {
 " > $domain
 ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/
 nginx -t
-certbot --nginx -d $domain
+# certbot --nginx -d $domain
 systemctl restart nginx
 
 tput setaf $MAGENTA;
