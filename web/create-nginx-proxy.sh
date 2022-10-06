@@ -13,16 +13,16 @@ WHITE=7
 
 # var init
 # domain=''
-# appport=''
+# proxypass=''
 
 tput setaf $CYAN;
 while [[ -z "$domain" ]]
 do
     read -p "domain >> " domain
 done
-while [[ -z "$appport" ]]
+while [[ -z "$proxypass" ]]
 do
-    read -p "port   >> " appport
+    read -p "full proxy_pass   >> " proxypass
 done
 tput setaf $YELLOW;
 cd /etc/nginx/sites-available/
@@ -34,7 +34,7 @@ server {
     server_name ${domain};
     client_max_body_size 1024M;
     location / {
-        proxy_pass http://127.0.0.1:${appport};
+        proxy_pass ${proxypass};
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -46,7 +46,7 @@ server {
 ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/
 nginx -t
 # certbot --nginx -d $domain
-systemctl restart nginx
+systemctl reload nginx
 
 tput setaf $MAGENTA;
 echo ">> Config file: /etc/nginx/sites-available/$domain <<"
