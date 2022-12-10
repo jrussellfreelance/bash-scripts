@@ -1,5 +1,5 @@
 #!/bin/bash
-# Tested on Ubuntu 18.04
+# Tested on Ubuntu 22.04
 # This script creates an nginx reverse proxy
 ### Assign Color Variables
 BLACK=0
@@ -22,7 +22,7 @@ do
 done
 while [[ -z "$proxypass" ]]
 do
-    read -p "full proxy_pass   >> " proxypass
+    read -p "full proxy_pass (e.g. http://127.0.0.1:8082) >> " proxypass
 done
 tput setaf $YELLOW;
 cd /etc/nginx/sites-available/
@@ -32,14 +32,14 @@ server {
     listen 80;
     listen [::]:80;
     server_name ${domain};
-    client_max_body_size 1024M;
+    client_max_body_size 2048M;
     location / {
         proxy_pass ${proxypass};
         proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
 " > $domain
