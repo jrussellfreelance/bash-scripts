@@ -2,25 +2,14 @@
 # Tested on Ubuntu 18.04 LTS
 # This script allows you to quickly configure Git.
 
-### Assign Color Variables
-BLACK=0
-RED=1
-GREEN=2
-YELLOW=3
-BLUE=4
-MAGENTA=5
-CYAN=6
-WHITE=7
-
 while [ -z "$CHOICE" ]; do
-tput setaf $MAGENTA;
 echo "
     1 >> Set global user settings
     2 >> Set local user settings
     3 >> Set remote origin url
     X >> Exit
 "
-tput setaf $CYAN; read -n1 -p "    Enter your selection >> " CHOICE
+read -n1 -p "    Enter your selection >> " CHOICE
 
 case $CHOICE in
 1)
@@ -67,17 +56,14 @@ case $CHOICE in
     git remote set-url origin $GIT_URL
 ;;
 [xX]) 
-    tput setaf $RED; echo "";
+    echo "";
     echo "    >> Exiting!"
-    tput setaf $WHITE;
     exit
 ;;
 *)
-    tput setaf $RED; echo "
+    echo "
     >> Please enter a valid choice"
     unset CHOICE
 ;;
 esac
 done
-
-tput setaf $WHITE;
