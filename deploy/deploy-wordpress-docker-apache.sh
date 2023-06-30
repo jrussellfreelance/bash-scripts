@@ -2,7 +2,11 @@
 # tested on Ubuntu 22.04
 # this script deploys Wordpress w/ Apache via Docker Compose
 
-# grab variables from user
+# grab variables
+while [[ -z "$domain" ]]
+do
+    read -p "wordpress domain >> " domain
+done
 while [[ -z "$hostport" ]]
 do
     read -p "host port >> " hostport
@@ -10,10 +14,6 @@ done
 while [[ -z "$phpport" ]]
 do
     read -p "phpmyadmin port >> " phpport
-done
-while [[ -z "$domain" ]]
-do
-    read -p "wordpress domain >> " domain
 done
 
 # generate passwords
