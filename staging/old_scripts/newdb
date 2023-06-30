@@ -1,0 +1,12 @@
+#!/bin/bash
+echo A mySQL Database Creation Script
+read -p "New database name: " NEWDB
+read -p "New database user: " NEWUSER
+read -p "New database user password: " NEWPWD
+mysql -uroot -pFail!!:P99 <<EOF 
+CREATE DATABASE $NEWDB;
+CREATE USER $NEWUSER@localhost IDENTIFIED BY "$NEWPWD";
+GRANT ALL PRIVILEGES ON $NEWDB.* TO $NEWUSER@localhost IDENTIFIED BY '$NEWPWD';
+FLUSH PRIVILEGES;
+exit
+EOF

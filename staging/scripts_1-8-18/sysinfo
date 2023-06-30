@@ -1,0 +1,23 @@
+#!/bin/bash
+# This script grabs system information, stores it in a text file, and emails it to you.
+echo "$(hostname) System Information:" > ~/sysinfo.txt
+echo "Total Task Count:" >> ~/sysinfo.txt
+top -b -n 1 | grep Tasks | awk '{print $2}' >> ~/sysinfo.txt
+echo "Running Task Count:" >> ~/sysinfo.txt
+top -b -n 1 | grep Tasks | awk '{print $4}' >> ~/sysinfo.txt
+echo "Sleeping Task Count:" >> ~/sysinfo.txt
+top -b -n 1 | grep Tasks | awk '{print $6}' >> ~/sysinfo.txt
+echo "Total Memory:" >> ~/sysinfo.txt
+free -m | grep "Mem:" | awk '{print $2}' >> ~/sysinfo.txt
+echo "Free Memory:" >> ~/sysinfo.txt
+free -m | grep "Mem:" | awk '{print $4}' >> ~/sysinfo.txt
+echo "Used Memory:" >> ~/sysinfo.txt
+free -m | grep "Mem:" | awk '{print $3}' >> ~/sysinfo.txt
+echo "Running Processes:" >> ~/sysinfo.txt
+ps aux >> ~/sysinfo.txt
+echo "Disk Usage (Filesystem, Total, Used, Available, Use %, Mounted On):" >> ~/sysinfo.txt
+df --block-size G >> ~/sysinfo.txt
+echo "Used Ports:" >> ~/sysinfo.txt
+netstat -tulpn | grep LISTEN >> ~/sysinfo.txt
+
+mail -s "$(hostname) System Information" "user.email@website.com" < ~/sysinfo.txt

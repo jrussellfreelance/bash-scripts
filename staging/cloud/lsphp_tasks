@@ -1,0 +1,4 @@
+run "nano /usr/local/lsws/lsphp73/etc/php/7.3/litespeed/php.ini"
+- add post_max_size and upload_max_filesize = 64M
+run "killall lsphp"
+run "systemctl restart lsws"
