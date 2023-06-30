@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "vps30427 System Information:" > /home/sysadm6/sysinfo.txt
+echo "Total Task Count:" >> /home/sysadm6/sysinfo.txt
+top -b -n 1 | grep Tasks | awk '{print $2}' >> /home/sysadm6/sysinfo.txt
+echo "Running Task Count:" >> /home/sysadm6/sysinfo.txt
+top -b -n 1 | grep Tasks | awk '{print $4}' >> /home/sysadm6/sysinfo.txt
+echo "Sleeping Task Count:" >> /home/sysadm6/sysinfo.txt
+top -b -n 1 | grep Tasks | awk '{print $6}' >> /home/sysadm6/sysinfo.txt
+echo "Total Memory:" >> /home/sysadm6/sysinfo.txt
+free -m | grep "Mem:" | awk '{print $2}' >> /home/sysadm6/sysinfo.txt
+echo "Free Memory:" >> /home/sysadm6/sysinfo.txt
+free -m | grep "Mem:" | awk '{print $4}' >> /home/sysadm6/sysinfo.txt
+echo "Used Memory:" >> /home/sysadm6/sysinfo.txt
+free -m | grep "Mem:" | awk '{print $3}' >> /home/sysadm6/sysinfo.txt
+echo "Running Processes:" >> /home/sysadm6/sysinfo.txt
+ps aux >> /home/sysadm6/sysinfo.txt
+echo "Disk Usage (Filesystem, Total, Used, Available, Use %, Mounted On):" >> /home/sysadm6/sysinfo.txt
+df --block-size G | grep /dev/ploop65487p1 >> /home/sysadm6/sysinfo.txt
+echo "Used Ports:" >> /home/sysadm6/sysinfo.txt
+netstat -tulpn | grep LISTEN >> /home/sysadm6/sysinfo.txt
+
+mail -s "vps30427 System Information" "jac.fearsome@gmail.com" <sysinfo.txt

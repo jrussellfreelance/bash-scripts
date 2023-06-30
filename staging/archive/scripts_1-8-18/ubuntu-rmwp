@@ -1,0 +1,38 @@
+#!/bin/bash
+echo "A Wordpress website deletion script"
+echo "Running ls -al /usr/share/nginx to show you the list of wordpress sites..."
+ls -al /usr/share/nginx
+echo "To find the database name and user name, look in the wp-config file for the website files before running this script."
+while [[ -z "$WEBNAME" ]]
+do
+  read -p "Website Name: " WEBNAME
+done
+while [[ -z "$DBNAME" ]]
+do
+  read -p "Database Name: " DBNAME
+done
+while [[ -z "$DBUSER" ]]
+do
+  read -p "Database User: " DBUSER
+done
+while [[ -z "$ROOTPWD" ]]
+do
+    read -s -p "MySQL Root Password: " ROOTPWD
+done
+echo "Deleting website files..."
+rm -r /usr/share/nginx/$WEBNAME
+echo "Deleting Nginx config..."
+rm /etc/nginx/sites-enabled/$WEBNAME
+echo "Deleting PHP-FPM pool config..."
+rm /etc/php/7.0/fpm/pool.d/$WEBNAME.conf
+echo "Deleting MySQL database..."
+mysql -uroot -p$ROOTPWD <<EOF
+DROP DATABASE $DBNAME;
+DROP USER $DBUSER@localhost;
+FLUSH PRIVILEGES;
+exit
+EOF
+echo "Restarting services..."
+systemctl restart php7.0-fpm
+systemctl restart nginx
+echo "All done!"

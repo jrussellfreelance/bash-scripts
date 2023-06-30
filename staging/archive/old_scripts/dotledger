@@ -1,0 +1,4 @@
+#! /bin/bash
+
+cd /home/sysadm6/ruby_apps/dotledger
+bundle exec rails server -p 3002 -b 0.0.0.0

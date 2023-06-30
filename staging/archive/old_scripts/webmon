@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if curl -I https://www.sysadmintools.io | grep -q "200"; then
+        echo dash1.theselftaughttechie.com is up!
+else
+        echo dash1.theselftaughttechie.com is down. Sending email...
+        mail -s "dash1.theselftaughttechie.com" "jac.fearsome@gmail.com" <<EOF
+dash1.theselftaughttechie.com is down
+EOF
+fi
