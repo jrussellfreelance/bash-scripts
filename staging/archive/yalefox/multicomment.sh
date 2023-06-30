@@ -1,5 +1,0 @@
-: '
-sdasdas
-asdasd
-asdasd
-'

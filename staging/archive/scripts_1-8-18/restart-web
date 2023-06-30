@@ -1,6 +1,0 @@
-#!/bin/bash
-echo "Restarting Nginx service..."
-systemctl restart nginx
-echo "Restarting PHP-FPM service..."
-systemctl restart php7.0-fpm
-echo "Done!"

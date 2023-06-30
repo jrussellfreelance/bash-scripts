@@ -1,1 +1,0 @@
-cd /run/user/1000/gvfs/smb-share:server=raspberrypi.local,share=data/contracts/yale-fox

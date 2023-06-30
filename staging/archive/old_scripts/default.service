@@ -1,8 +1,0 @@
-[Unit]
-Description=desc_here
-
-[Service]
-ExecStart=path_name_here
-
-[Install]
-WantedBy=multi-user.target

@@ -1,7 +1,0 @@
-#!/bin/bash
-if [ $# -eq 0 ]
-then
-	echo "Please specify the path for the link to /usr/bin"
-else
-	ln -s $1 /usr/bin
-fi

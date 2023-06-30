@@ -1,8 +1,0 @@
-#!/bin/bash
-
-systemctl stop php-fpm
-systemctl stop nginx
-systemctl start nginx
-systemctl start php-fpm
-systemctl reload nginx
-systemctl reload php-fpm

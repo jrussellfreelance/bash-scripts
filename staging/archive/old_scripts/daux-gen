@@ -1,5 +1,0 @@
-#!/bin/bash
-docker run --rm -it -w /build -v /jacfearsome:/build daux/daux.io daux generate
-rm -rf /usr/share/nginx/static
-cp -a /jacfearsome/static /usr/share/nginx/static
-chown www-data:www-data /usr/share/nginx/static -R

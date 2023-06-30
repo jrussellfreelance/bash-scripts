@@ -1,6 +1,0 @@
-docker run -d --name shlink -p 8080:8080 -e SHORT_DOMAIN_HOST=jrussell.io -e SHORT_DOMAIN_SCHEMA=https shlinkio/shlink:stable
-docker run -d --name shlink-wc -p 8000:80 -v /usr/share/nginx/html/servers.json:/usr/share/nginx/html/servers.json shlinkio/shlink-web-client
-
-docker exec -it shlink shlink api-key:generate
-
-c6bc2048-7794-435a-b755-44cca7d540b3
