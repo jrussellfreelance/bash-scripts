@@ -1,0 +1,57 @@
+#!/bin/bash
+if [[ $# -ne 2 ]] || [[ $2 == ?(-)+([!0-9]) ]]
+then
+        echo $"Usage: $0 {alternatives|apt-history|apt-term|auth|dpkg|kern|letsencrypt|nginx-err|nginx-access|phpfpm|pm2|sys|ufw|mongo} {number_of_lines}"
+	exit 1
+else
+case "$1" in
+        alternatives)
+            tail -$2 /var/log/alternatives.log
+            ;;
+        apt-history)
+            tail -$2 /var/log/apt/history.log
+            ;;
+        apt-term)
+            tail -$2 /var/log/apt/term.log
+            ;;
+        auth)
+            tail -$2 /var/log/auth.log
+            ;;
+        dpkg)
+            tail -$2 /var/log/dpkg.log
+            ;;
+        kern)
+            tail -$2 /var/log/kern.log
+            ;;
+        letsencrypt)
+            tail -$2 /var/log/letsencrypt/letsencrypt.log
+            ;;
+        mysql)
+            tail -$2 /var/log/mysql/error.log
+            ;;
+        nginx-err)
+            tail -$2 /var/log/nginx/error.log
+            ;;
+        nginx-access)
+            tail -$2 /var/log/nginx/access.log
+            ;;
+        phpfpm)
+            tail -$2 /var/log/php7.0-fpm.log
+            ;;
+        pm2)
+            pm2 logs all
+            ;;
+        sys)
+            tail -$2 /var/log/syslog
+            ;;
+        ufw)
+            tail -$2 /var/log/ufw.log
+            ;;
+        mongo)
+            tail -$2 /var/log/mongodb/mongod.log
+            ;;
+        *)
+            echo $"Usage: $0 {alternatives|apt-history|apt-term|auth|dpkg|kern|letsencrypt|nginx-err|nginx-access|phpfpm|pm2|sys|ufw|mongo} {number_of_lines}"
+            exit 1
+esac
+fi

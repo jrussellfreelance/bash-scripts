@@ -1,0 +1,7 @@
+#!/bin/bash
+cd /home/jac/apps
+for d in */ ; do
+    cd "$d"
+    pm2 start server.js --name "$d"
+    cd ..
+done

@@ -1,0 +1,10 @@
+[Unit]
+Description= Automatically update permissions and ownership for all files in /srv
+
+[Service]
+User=root
+Group=root
+ExecStart=/usr/bin/inotify-hookable -w /srv -c "chown www-data:www-data -R /srv && chmod 774 -R /srv"
+
+[Install]
+WantedBy=multi-user.target

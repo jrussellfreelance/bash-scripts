@@ -1,0 +1,37 @@
+version: '3.3'
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver_opts:
+      type: none
+      device: /var/lib/mysql
+      o: bind
+
+services:
+  mysql:
+    container_name: domainmod-mysql
+    image: mariadb:10.3
+    command: mysqld --sql_mode=""
+    networks:
+      - default
+    restart: always
+    environment:
+      MYSQL_DATABASE: "domainmod"
+      MYSQL_USER: "domainer"
+      MYSQL_PASSWORD: "domainMe123"
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    volumes:
+      - mysql-data:/var/lib/mysql
+  domainmod:
+    container_name: domainmod
+    image: registry.ctrlzr.com/koshatul/domainmod:dev
+    build: .
+    networks:
+      - default
+    environment:
+      - VIRTUAL_HOST=domains.jrussell.io
+    restart: always
