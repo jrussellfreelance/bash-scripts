@@ -9,6 +9,7 @@ curl \
 wget \
 unzip \
 expect \
+plocate \
 net-tools \
 build-essential \
 apt-transport-https \
