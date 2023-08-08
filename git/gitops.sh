@@ -8,7 +8,7 @@
 usage()
 {
     echo '-> This script adds all changes, commits all changes, and pushes them. Usage:'
-    echo '-> gitops.sh "commit msg here" <branch|master> <gitpath|cwd> <remote|origin>'
+    echo '-> gitops.sh "commit msg here" <branch|master> <remote|origin> <gitpath|cwd> '
 }
 
 # variables
@@ -29,15 +29,15 @@ if [ -z "$2" ]; then
     branch="master"
 else branch=$2; fi
 
-# assign dir to current dir if no arg
-if [ -z "$3" ]; then
-    repo_dir=$(pwd)
-else repo_dir=$3; fi
-
 # assign remote to 'origin' if no arg
-if [ -z "$4" ]; then
+if [ -z "$3" ]; then
     remote="origin"
-else remote=$4; fi
+else remote=$3; fi
+
+# assign dir to current dir if no arg
+if [ -z "$4" ]; then
+    repo_dir=$(pwd)
+else repo_dir=$4; fi
 
 # validate .git dir exists
 if [ -d "$repo_dir/.git" ]; then
