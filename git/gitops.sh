@@ -57,6 +57,8 @@ read -n1 -p "> git checkout $branch [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git checkout $branch"
   git checkout $branch
+else
+  echo "- skipping"
 fi
 
 # check if .gitignore exists, and create it
@@ -80,6 +82,8 @@ read -n1 -p "> git add . --all [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git add . --all"
   git add . --all
+else
+  echo "- skipping"
 fi
 
 # commit all changes
@@ -88,6 +92,8 @@ read -n1 -p "> git commit -am \"$commit_msg\" [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git commit -am \"$commit_msg\""
   git commit -am "$commit_msg"
+else
+  echo "- skipping"
 fi
 
 # push changes to remote branch
@@ -96,6 +102,8 @@ read -n1 -p "> git push $remote $branch [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git push $remote $branch"
   git push $remote $branch
+else
+  echo "- skipping"
 fi
 
 # get remote origin url
