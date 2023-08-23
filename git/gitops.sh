@@ -3,12 +3,13 @@
 ## This script executes various git commands to streamline a git add, commit, and push operation
 ## The commands add all files and commit all changes by default
 ## This script was added primarily for personal convenience
+echo "! gitops.sh: started ---"
 
 # print usage
 usage()
 {
-  echo '-> This script adds all changes, commits all changes, and pushes them.'
-  echo ' $ gitops.sh "commit msg here" <branch|master> <remote|origin> <gitpath|cwd> '
+  echo '> This script adds all changes, commits all changes, and pushes them.'
+  echo '$ gitops.sh "commit msg here" <branch|master> <remote|origin> <gitpath|cwd>'
 }
 
 # variables
@@ -51,8 +52,10 @@ else
 fi
 
 # checkout specified or default branch
-if [ ! -z "$branch" ]; then
-  echo "+ git checkout $branch"
+echo ''
+read -n1 -p "> git checkout $branch [Y/y] " key
+if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+  echo ""; echo "+ git checkout $branch"
   git checkout $branch
 fi
 
@@ -100,5 +103,5 @@ remote_url=$(git config --get "remote.$remote.url")
 
 # print status and url
 echo ''
-echo "> git ops complete"
 echo "> $remote_url"
+echo "! gitops.sh: complete ---"
