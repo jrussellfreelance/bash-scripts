@@ -18,9 +18,9 @@ case $CHOICE in
 1)
     while [[ -z "$GIT_URL" ]]
     do
-        read -p "        remote url >> " $GIT_URL
+        read -p "        remote url >> " GIT_URL
     done
-    read -p "        remote name (origin) >> " $GIT_ORIGIN
+    read -p "        remote name (origin) >> " GIT_ORIGIN
     if [ -z "$GIT_ORIGIN" ]; then
         GIT_ORIGIN="origin"
     fi
