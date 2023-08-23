@@ -3,12 +3,12 @@
 ## This script executes various git commands to streamline a git add, commit, and push operation
 ## The commands add all files and commit all changes by default
 ## This script was added primarily for personal convenience
-echo "! gitops.sh: started ---"
 
-# print usage
+echo "! gitops.sh started ---"
+
 usage()
-{
-  echo '> This script adds all changes, commits all changes, and pushes them.'
+{ # print usage
+  echo '> this script adds all changes, commits all changes, and pushes them'
   echo '$ gitops.sh "commit msg here" <branch|master> <remote|origin> <gitpath|cwd>'
 }
 
@@ -19,7 +19,7 @@ repo_dir=
 remote=
 remote_url=
 
-# check for the help flag and set the commit message
+# -h or --help displays usage message
 if [[ -z "$1" || "$1" == "-h" || "$1" == "--help" ]]; then
 	usage
   exit
@@ -40,13 +40,19 @@ if [ -z "$4" ]; then
   repo_dir=$(pwd)
 else repo_dir=$4; fi
 
-# validate .git dir exists, otherwise run git init
+# validate .git dir exists, otherwise offer to initialize
 if [ -d "$repo_dir/.git" ]; then
-  echo "+ cd \"$repo_dir\""
-  cd "$repo_dir"
-else
-  echo "+ git init"
-  git init
+  echo "+ cd $repo_dir"
+  cd $repo_dir
+else # perform git init
+  read -n1 -p "> no .git found, initialize a new repository? [Y/y] " key
+  if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+    echo ""; echo "+ git init"
+    git init
+  else # otherwise exit
+    echo ""; echo "! no .git directory in $repo_dir, exiting ---"
+    exit
+  fi
   echo "+ cd \"$repo_dir\""
   cd "$repo_dir"
 fi
@@ -111,5 +117,5 @@ remote_url=$(git config --get "remote.$remote.url")
 
 # print status and url
 echo ''
-echo "> $remote_url"
-echo "! gitops.sh: complete ---"
+echo "! $remote_url"
+echo "! gitops.sh complete ---"
