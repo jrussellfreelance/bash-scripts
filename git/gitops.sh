@@ -81,7 +81,7 @@ fi
 
 # commit all changes
 echo ''
-read -n1 -p "> git commit -am '$commit_msg' [Y/y] " key
+read -n1 -p "> git commit -am \"$commit_msg\" [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git commit -am \"$commit_msg\""
   git commit -am "$commit_msg"
