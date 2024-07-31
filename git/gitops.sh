@@ -12,6 +12,29 @@ usage()
   echo '$ gitops.sh "commit msg here" <branch|master> <remote|origin> <gitpath|cwd>'
 }
 
+# helper functions
+git_repo_branch() { # prints the repo and branch
+  repo=$(git remote -v 2>/dev/null | head -n 1 | sed -nE 's@^.*/(.*).git.*$@\1@p')
+  if [ "$repo" != "" ]; then
+    branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    printf "[$repo $branch]"
+  else
+    printf ""
+  fi
+}
+function gitroot { # print git root folder
+  r=$(git rev-parse --git-dir) && r=$(cd "$r" && pwd)/ && echo "${r%%/.git/*}"
+}
+function gitremote { # print git remotes
+  repodir=`gitroot`
+  cd $repodir
+  git remote -v | grep fetch | awk '{print $2}' | sort | uniq
+}
+function gitdir { # switch to git root folder
+  repodir=`gitroot`
+  cd $repodir
+}
+
 # variables
 commit_msg=
 branch=
@@ -41,7 +64,12 @@ if [ -z "$4" ]; then
 else repo_dir=$4; fi
 
 # validate .git dir exists, otherwise offer to initialize
-if [ -d "$repo_dir/.git" ]; then
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  # determine git dir
+  gitdir
+  if [ -d $(pwd) ]; then
+    repo_dir=$(pwd)
+  fi
   echo "+ cd $repo_dir"
   cd $repo_dir
 else # perform git init
