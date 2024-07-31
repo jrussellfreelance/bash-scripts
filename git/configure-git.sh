@@ -12,7 +12,8 @@ echo " 0 > add a remote url
  4 > set local repository's name and email
  5 > set global username
  6 > set global name and email
- 7 > exit"
+ 7 > set rebase and merge options
+ 8 > exit"
 read -n1 -p " --> enter selection: " CHOICE
 
 case $CHOICE in
