@@ -191,6 +191,14 @@ case $CHOICE in
 ;;
 6)
     echo ""
+    # create and edit HTML readme file
+    touch .git/README.html
+    read -n1 -p " ->  edit README.html with nano [N/n] or vim [V/v] " key
+    if [[ "$key" == "n" || "$key" == "N" ]] ; then
+      nano .git/README.html
+    elif [[ "$key" == "v" || "$key" == "V" ]] ; then
+      vim .git/README.html
+    fi
     # set project description and write to file
     read -p "  -> project description: " GIT_DESCRIPTION
     echo "+ git config gitweb.description '$GIT_DESCRIPTION'"
