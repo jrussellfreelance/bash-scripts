@@ -106,7 +106,26 @@ echo " --> configure-git.sh: complete ---"
     git config --replace-all --global user.email $GIT_EMAIL
     echo " --> configure-git.sh: complete ---"
 ;;
-[7])
+7)
+    echo ''
+    read -n1 -p "> git config pull.rebase false [Y/y] " key
+    if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+    echo "# merge (the default strategy)"; echo "+ git config pull.rebase false"
+    git config pull.rebase false
+    fi
+    read -n1 -p "> git config pull.rebase true [Y/y] " key
+    if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+    echo "# rebase"; echo "+ git config pull.rebase true"
+    git config pull.rebase true
+    fi
+    read -n1 -p "> git config pull.ff only [Y/y] " key
+    if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+    echo "# fast-forward only"; echo "+ git config pull.ff only"
+    git config pull.ff only
+    fi
+    echo " --> configure-git.sh: complete ---"
+;;
+[8])
     echo ""; echo " --> configure-git.sh: exiting ---"
     exit
 ;;
