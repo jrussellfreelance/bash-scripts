@@ -191,28 +191,21 @@ case $CHOICE in
 ;;
 6)
     echo ""
-    while [[ -z "$GIT_DESCRIPTION" ]]
-    do
-        read -p "  -> project description: " GIT_DESCRIPTION
-    done
+    # set project description and write to file
+    read -p "  -> project description: " GIT_DESCRIPTION
     echo "+ git config gitweb.description '$GIT_DESCRIPTION'"
     git config gitweb.description "$GIT_DESCRIPTION"
-    while [[ -z "$GIT_CATEGORY" ]]
-    do
-        read -p "  -> project category: " GIT_CATEGORY
-    done
+    echo $GIT_DESCRIPTION > .git/description
+    # set project category
+    read -p "  -> project category: " GIT_CATEGORY
     echo "+ git config gitweb.category '$GIT_CATEGORY'"
     git config gitweb.category "$GIT_CATEGORY"
-    while [[ -z "$GIT_CLONEURL" ]]
-    do
-        read -p "  -> project cloneurl: " GIT_CLONEURL
-    done
+    # set project clone url
+    read -p "  -> project cloneurl: " GIT_CLONEURL
     echo "+ git config gitweb.cloneurl '$GIT_CLONEURL'"
     git config gitweb.cloneurl "$GIT_CLONEURL"
-    while [[ -z "$GIT_OWNER" ]]
-    do
-        read -p "  -> project owner: " GIT_OWNER
-    done
+    # set project owner
+    read -p "  -> project owner: " GIT_OWNER
     echo "+ git config gitweb.owner '$GIT_OWNER'"
     git config gitweb.owner "$GIT_OWNER"
 ;;
