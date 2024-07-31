@@ -136,26 +136,26 @@ echo " --> configure-git.sh: complete ---"
     do
         read -p "  -> project description: " GIT_DESCRIPTION
     done
-    echo "   + git config --replace-all gitweb.description $GIT_DESCRIPTION"
-    git config --replace-all --global gitweb.description $GIT_DESCRIPTION
+    echo "   + git config gitweb.description $GIT_DESCRIPTION"
+    git config gitweb.description $GIT_DESCRIPTION
     while [[ -z "$GIT_CATEGORY" ]]
     do
         read -p "  -> project category: " GIT_CATEGORY
     done
-    echo "   + git config --replace-all gitweb.category $GIT_CATEGORY"
-    git config --replace-all --global gitweb.category $GIT_CATEGORY
+    echo "   + git configgitweb.category $GIT_CATEGORY"
+    git config gitweb.category $GIT_CATEGORY
     while [[ -z "$GIT_CLONEURL" ]]
     do
         read -p "  -> project cloneurl: " GIT_CLONEURL
     done
-    echo "   + git config --replace-all gitweb.cloneurl $GIT_CLONEURL"
-    git config --replace-all --global gitweb.cloneurl $GIT_CLONEURL
+    echo "   + git config gitweb.cloneurl $GIT_CLONEURL"
+    git config gitweb.cloneurl $GIT_CLONEURL
     while [[ -z "$GIT_OWNER" ]]
     do
         read -p "  -> project owner: " GIT_OWNER
     done
-    echo "   + git config --replace-all gitweb.owner $GIT_OWNER"
-    git config --replace-all --global gitweb.owner $GIT_OWNER
+    echo "   + git config gitweb.owner $GIT_OWNER"
+    git config gitweb.owner $GIT_OWNER
     echo " --> configure-git.sh: complete ---"
 ;;
 [9])
