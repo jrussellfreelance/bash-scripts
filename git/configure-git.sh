@@ -13,7 +13,8 @@ echo " 0 > add a remote url
  5 > set global username
  6 > set global name and email
  7 > set rebase and merge options
- 8 > exit"
+ 8 > set gitweb config values
+ 9 > exit"
 read -n1 -p " --> enter selection: " CHOICE
 
 case $CHOICE in
@@ -129,7 +130,35 @@ echo " --> configure-git.sh: complete ---"
     fi
     echo " --> configure-git.sh: complete ---"
 ;;
-[8])
+8)
+    echo "";
+    while [[ -z "$GIT_DESCRIPTION" ]]
+    do
+        read -p "  -> project description: " GIT_DESCRIPTION
+    done
+    echo "   + git config --replace-all gitweb.description $GIT_DESCRIPTION"
+    git config --replace-all --global gitweb.description $GIT_DESCRIPTION
+    while [[ -z "$GIT_CATEGORY" ]]
+    do
+        read -p "  -> project category: " GIT_CATEGORY
+    done
+    echo "   + git config --replace-all gitweb.category $GIT_CATEGORY"
+    git config --replace-all --global gitweb.category $GIT_CATEGORY
+    while [[ -z "$GIT_CLONEURL" ]]
+    do
+        read -p "  -> project cloneurl: " GIT_CLONEURL
+    done
+    echo "   + git config --replace-all gitweb.cloneurl $GIT_CLONEURL"
+    git config --replace-all --global gitweb.cloneurl $GIT_CLONEURL
+    while [[ -z "$GIT_OWNER" ]]
+    do
+        read -p "  -> project owner: " GIT_OWNER
+    done
+    echo "   + git config --replace-all gitweb.owner $GIT_OWNER"
+    git config --replace-all --global gitweb.owner $GIT_OWNER
+    echo " --> configure-git.sh: complete ---"
+;;
+[9])
     echo ""; echo " --> configure-git.sh: exiting ---"
     exit
 ;;
