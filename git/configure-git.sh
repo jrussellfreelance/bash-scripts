@@ -109,19 +109,22 @@ echo " --> configure-git.sh: complete ---"
 ;;
 7)
     echo ''
+    echo "# merge (the default strategy)"
     read -n1 -p "> git config pull.rebase false [Y/y] " key
     if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-    echo "# merge (the default strategy)"; echo "+ git config pull.rebase false"
+    echo "+ git config pull.rebase false"
     git config pull.rebase false
     fi
+    echo "# rebase"
     read -n1 -p "> git config pull.rebase true [Y/y] " key
     if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-    echo "# rebase"; echo "+ git config pull.rebase true"
+    echo "+ git config pull.rebase true"
     git config pull.rebase true
     fi
+    echo "# fast-forward only"
     read -n1 -p "> git config pull.ff only [Y/y] " key
     if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-    echo "# fast-forward only"; echo "+ git config pull.ff only"
+    echo "+ git config pull.ff only"
     git config pull.ff only
     fi
     echo " --> configure-git.sh: complete ---"
