@@ -9,7 +9,7 @@ echo "! gitops.sh started ---"
 usage()
 { # print usage
   echo '> this script adds all changes, commits all changes, and pushes them'
-  echo '$ gitops.sh "commit msg here"<branch|master> <remote|origin> <gitpath|cwd> -s|--sudo'
+  echo '$ gitops.sh "commit msg here" <branch|master> <remote|origin> <gitpath|cwd>'
 }
 
 # helper functions
@@ -41,18 +41,12 @@ branch=
 repo_dir=
 remote=
 remote_url=
-asroot=
 
 # -h or --help displays usage message
 if [[ -z "$1" || "$1" == "-h" || "$1" == "--help" ]]; then
 	usage
   exit
 else commit_msg=$1; fi
-
-# -s or --sudo executes the commands with sudo
-if [[ ${!#} == "-s" || ${!#} == "--sudo" ]]; then
-	asroot="sudo"
-else asroot=""; fi
 
 # assign branch to 'master' if no arg
 if [ -z "$2" ]; then
@@ -66,23 +60,22 @@ else remote=$3; fi
 
 # assign dir to current dir if no arg
 if [ -z "$4" ]; then
-  repo_dir=$(pwd)
-else repo_dir=$4; fi
-
-# validate .git dir exists, otherwise offer to initialize
-if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-  # determine git dir
+  # try to switch to git root
   gitdir
   if [ -d $(pwd) ]; then
     repo_dir=$(pwd)
   fi
-  echo "+ cd $repo_dir"
-  cd $repo_dir
+else repo_dir=$4; fi
+
+# validate .git dir exists, otherwise offer to initialize
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  echo "+ cd \"$repo_dir\""
+  cd "$repo_dir"
 else # perform git init
   read -n1 -p "> no .git found, initialize a new repository? [Y/y] " key
   if [[ "$key" == "y" || "$key" == "Y" ]] ; then
     echo ""; echo "+ git init"
-    $asroot git init
+    git init
   else # otherwise exit
     echo ""; echo "! no .git directory in $repo_dir, exiting ---"
     exit
@@ -96,7 +89,7 @@ echo ''
 read -n1 -p "> git checkout $branch [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git checkout $branch"
-  $asroot git checkout $branch
+  git checkout $branch
 else
   echo "- skipping"
 fi
@@ -104,7 +97,7 @@ fi
 # check if .gitignore exists, and create it
 if [ ! -f .gitignore ]; then
   echo '+ touch .gitignore'
-  $asroot touch .gitignore
+  touch .gitignore
 fi
 
 # check if .DS_Store exists, and remove it after adding to .gitignore
@@ -112,7 +105,7 @@ if [ -f .DS_Store ]; then
   echo '+ echo "" >> .gitignore; echo ".DS_Store" >> .gitignore'
   echo "" >> .gitignore; echo ".DS_Store" >> .gitignore
   echo '+ git rm .DS_Store; rm -f .DS_Store'
-  $asroot git rm .DS_Store; rm -f .DS_Store
+  git rm .DS_Store; rm -f .DS_Store
 fi
 
 # perform git ops
@@ -121,7 +114,7 @@ echo ''
 read -n1 -p "> git add . --all [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git add . --all"
-  $asroot git add . --all
+  git add . --all
 else
   echo "- skipping"
 fi
@@ -131,7 +124,7 @@ echo ''
 read -n1 -p "> git commit -am \"$commit_msg\" [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git commit -am \"$commit_msg\""
-  $asroot git commit -am "$commit_msg"
+  git commit -am "$commit_msg"
 else
   echo "- skipping"
 fi
@@ -141,7 +134,7 @@ echo ''
 read -n1 -p "> git push $remote $branch [Y/y] " key
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
   echo ""; echo "+ git push $remote $branch"
-  $asroot git push $remote $branch
+  git push $remote $branch
 else
   echo "- skipping"
 fi
