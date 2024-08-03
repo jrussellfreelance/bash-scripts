@@ -9,7 +9,7 @@ echo "! gitops.sh started ---"
 usage()
 { # print usage
   echo '> this script adds all changes, commits all changes, and pushes them'
-  echo '$ gitops.sh "commit msg here"<branch|master> <remote|origin> <gitpath|cwd> -s|--sudo '
+  echo '$ gitops.sh "commit msg here"<branch|master> <remote|origin> <gitpath|cwd> -s|--sudo'
 }
 
 # helper functions
@@ -50,7 +50,7 @@ if [[ -z "$1" || "$1" == "-h" || "$1" == "--help" ]]; then
 else commit_msg=$1; fi
 
 # -s or --sudo executes the commands with sudo
-if [[ "${@: -1}" == "-s" || "${@: -1}" == "--sudo" ]]; then
+if [[ ${!#} == "-s" || ${!#} == "--sudo" ]]; then
 	asroot="sudo"
 else asroot=""; fi
 
