@@ -114,21 +114,6 @@ case $CHOICE in
     echo ""
     # print out remote urls
     git remote -v
-    # add remote url
-    read -n1 -p "  -> add a remote url [Y/y] " key
-    if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-      echo "";
-      while [[ -z "$ADD_ORIGIN" ]]
-      do
-          read -p "  -> remote name: " ADD_ORIGIN
-      done
-      while [[ -z "$ADD_URL" ]]
-      do
-          read -p "  -> remote url: " ADD_URL
-      done
-      echo "+ git remote add $ADD_ORIGIN $ADD_URL"
-      git remote add $ADD_ORIGIN $ADD_URL
-    fi
     # update remote url
     read -n1 -p "  -> update an existing remote [Y/y] " key
     if [[ "$key" == "y" || "$key" == "Y" ]] ; then
@@ -143,6 +128,21 @@ case $CHOICE in
       done
       echo "+ git remote set-url $GIT_ORIGIN $GIT_URL"
       git remote set-url $GIT_ORIGIN $GIT_URL
+    fi
+    # add remote url
+    read -n1 -p "  -> add a remote url [Y/y] " key
+    if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+      echo "";
+      while [[ -z "$ADD_ORIGIN" ]]
+      do
+          read -p "  -> remote name: " ADD_ORIGIN
+      done
+      while [[ -z "$ADD_URL" ]]
+      do
+          read -p "  -> remote url: " ADD_URL
+      done
+      echo "+ git remote add $ADD_ORIGIN $ADD_URL"
+      git remote add $ADD_ORIGIN $ADD_URL
     fi
     # remove remote url
     read -n1 -p "  -> remove an existing remote [Y/y] " key
