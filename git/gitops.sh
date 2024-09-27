@@ -4,12 +4,13 @@
 ## The commands add all files and commit all changes by default
 ## This script was added primarily for personal convenience
 
-echo "! gitops.sh started ---"
+echo -e "! gitops.sh started ---"
 
 usage()
 { # print usage
-  echo '> this script adds all changes, commits all changes, and pushes them'
-  echo '$ gitops.sh "commit msg here" <branch|master> <remote|origin> <gitpath|cwd>'
+  echo -e '> this script adds all changes, commits all changes, and pushes them'
+  echo -e '$ gitops.sh -y -m "msg" -b <branch|master> -r <remote|origin> -d <gitpath|pwd>'
+  echo -e '$ gitops.sh --yes --msg "commit msg" ---branch <branch|master> -r | --remote <remote|origin> -d | --dir <gitpath|cwd>'
 }
 
 # helper functions
@@ -36,113 +37,140 @@ function gitdir { # switch to git root folder
 }
 
 # variables
-commit_msg=
-branch=
-repo_dir=
-remote=
+YES=1
+commit_msg="updated on $(date +'%m-%d-%Y at %T')"
+branch="master"
+repo_dir=$(pwd)
+remote="origin"
 remote_url=
 
-# -h or --help displays usage message
-if [[ -z "$1" || "$1" == "-h" || "$1" == "--help" ]]; then
-	usage
-  exit
-else commit_msg=$1; fi
-
-# assign branch to 'master' if no arg
-if [ -z "$2" ]; then
-  branch="master"
-else branch=$2; fi
-
-# assign remote to 'origin' if no arg
-if [ -z "$3" ]; then
-  remote="origin"
-else remote=$3; fi
-
-# assign dir to current dir if no arg
-if [ -z "$4" ]; then
-  # try to switch to git root
-  gitdir
-  if [ -d $(pwd) ]; then
-    repo_dir=$(pwd)
-  fi
-else repo_dir=$4; fi
+while [ "$1" != "" ]; do
+case $1 in
+  -h | --help)
+    shift
+    usage
+    exit
+    ;;
+  -y | --yes)
+    shift
+    export YES=0
+    ;;
+  -m | --msg)
+    shift
+    commit_msg=$1
+    ;;
+  -b | --branch)
+    shift
+    branch=$1
+    ;;
+  -r | --remote)
+    shift
+    remote=$1
+    ;;
+  -d | --dir)
+    shift
+    repo_dir=$1
+    ;;
+  *)
+    shift
+  esac
+  shift
+done
 
 # validate .git dir exists, otherwise offer to initialize
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-  echo "+ cd \"$repo_dir\""
+  echo -e "+ cd \"$repo_dir\""
   cd "$repo_dir"
 else # perform git init
-  read -n1 -p "> no .git found, initialize a new repository? [Y/y] " key
+  if [[ "$YES" == 0 ]] ; then
+    key="y"
+  else
+    read -n1 -p "> no .git found, initialize a new repository? [Y/y] " key
+  fi
   if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-    echo ""; echo "+ git init"
+    echo -e "+ git init"
     git init
   else # otherwise exit
-    echo ""; echo "! no .git directory in $repo_dir, exiting ---"
+    echo -e "! no .git directory in $repo_dir, exiting ---"
     exit
   fi
-  echo "+ cd \"$repo_dir\""
   cd "$repo_dir"
+  echo -e "+ cd \"$repo_dir\""
 fi
 
-# checkout specified or default branch
-echo ''
-read -n1 -p "> git checkout $branch [Y/y] " key
-if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-  echo ""; echo "+ git checkout $branch"
-  git checkout $branch
+# check if the branch exists and save checkout cmd
+if git show-ref --verify --quiet refs/heads/$branch; then
+  echo -e "\n! $branch branch exists"
+  checkout_cmd="git checkout $branch"
 else
-  echo "- skipping"
+  echo -e "\n! $branch branch doesn't exist"
+  checkout_cmd="git checkout -b $branch"
+fi
+if [[ "$YES" == 0 ]] ; then
+  key="y"
+else
+  read -n1 -p "> $checkout_cmd [Y/y] " key
+fi
+# run git checkout command
+if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+  echo ""; $checkout_cmd
+  echo -e "+ $checkout_cmd\n"
+else
+  echo -e "- skipping\n"
 fi
 
-# check if .gitignore exists, and create it
+# check if .gitignore exists, create if it doesn't
 if [ ! -f .gitignore ]; then
-  echo '+ touch .gitignore'
   touch .gitignore
+  echo -e '+ touch .gitignore\n'
 fi
 
-# check if .DS_Store exists, and remove it after adding to .gitignore
+# if .DS_Store exists then remove it and add to .gitignore
 if [ -f .DS_Store ]; then
-  echo '+ echo "" >> .gitignore; echo ".DS_Store" >> .gitignore'
   echo "" >> .gitignore; echo ".DS_Store" >> .gitignore
-  echo '+ git rm .DS_Store; rm -f .DS_Store'
-  git rm .DS_Store; rm -f .DS_Store
+  echo -e '+ echo "" >> .gitignore; echo ".DS_Store" >> .gitignore\n'
+  git rm .DS_Store; rm .DS_Store
+  echo -e '+ git rm .DS_Store; rm .DS_Store\n'
 fi
 
 # perform git ops
 # add all untracked files
-echo ''
-read -n1 -p "> git add . --all [Y/y] " key
-if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-  echo ""; echo "+ git add . --all"
-  git add . --all
+if [[ "$YES" == 0 ]] ; then
+  key="y"
 else
-  echo "- skipping"
+  read -n1 -p "> git add . --all [Y/y] " key
+fi
+if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+  echo ""; git add . --all
+  echo -e "+ git add . --all\n"
+else
+  echo -e "- skipping\n"
 fi
 
 # commit all changes
-echo ''
-read -n1 -p "> git commit -am \"$commit_msg\" [Y/y] " key
-if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-  echo ""; echo "+ git commit -am \"$commit_msg\""
-  git commit -am "$commit_msg"
+if [[ "$YES" == 0 ]] ; then
+  key="y"
 else
-  echo "- skipping"
+  read -n1 -p "> git commit -am \"$commit_msg\" [Y/y] " key
+fi
+if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+  echo ""; git commit -am "$commit_msg"
+  echo -e "+ git commit -am \"$commit_msg\"\n"
+else
+  echo -e "- skipping\n"
 fi
 
 # push changes to remote branch
-echo ''
-read -n1 -p "> git push $remote $branch [Y/y] " key
-if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-  echo ""; echo "+ git push $remote $branch"
-  git push $remote $branch
+if [[ "$YES" == 0 ]] ; then
+  key="y"
 else
-  echo "- skipping"
+  read -n1 -p "> git push $remote $branch [Y/y] " key
+fi
+if [[ "$key" == "y" || "$key" == "Y" ]] ; then
+  echo -e "\n"; git push $remote $branch
+  echo -e "+ git push $remote $branch"
+else
+  echo -e "- skipping"
 fi
 
-# get remote origin url
-remote_url=$(git config --get "remote.$remote.url")
-
-# print status and url
-echo ''
-echo "! $remote_url"
-echo "! gitops.sh complete ---"
+echo -e "\n! git ops completed ---"
