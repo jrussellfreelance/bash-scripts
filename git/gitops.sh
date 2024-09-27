@@ -167,7 +167,7 @@ else
   read -n1 -p "> git push $remote $branch [Y/y] " key
 fi
 if [[ "$key" == "y" || "$key" == "Y" ]] ; then
-  echo -e "\n"; git push $remote $branch
+  echo ""; git push $remote $branch
   echo -e "+ git push $remote $branch"
 else
   echo -e "- skipping"
