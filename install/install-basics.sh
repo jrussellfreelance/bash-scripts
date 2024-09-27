@@ -1,16 +1,42 @@
 #!/bin/bash
-# Tested on Ubuntu 18.04 LTS
-# This script installs some basic Ubuntu goodies.
-sudo apt install -y \
-git \
-vim \
-nano \
-curl \
-wget \
-unzip \
-expect \
-plocate \
-net-tools \
-build-essential \
+# Tested on Ubuntu
+# This script installs some common dependencies
+
+# print package names
+cat <<'EOF'
+! installing via apt:
+- apt-transport-https
+- build-essential
+- ca-certificates
+- curl
+- dirmngr
+- expect
+- git
+- nano
+- net-tools
+- plocate
+- software-properties-common
+- uidmap
+- unzip
+- vim
+- wget
+EOF
+
+# perform update & install & autoremove
+sudo apt update && sudo apt install -y \
 apt-transport-https \
-software-properties-common
+build-essential \
+ca-certificates \
+curl \
+dirmngr \
+expect \
+git \
+nano \
+net-tools \
+plocate \
+software-properties-common \
+uidmap \
+unzip \
+vim \
+wget &&
+sudo apt autoremove -y
