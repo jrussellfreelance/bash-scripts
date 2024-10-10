@@ -4,17 +4,44 @@
 ## The commands add all files and commit all changes by default
 ## This script was added primarily for personal convenience
 
-echo -e "! gitops.sh started ---"
-
 usage()
-{ # print usage
-  echo -e '> this script adds all changes, commits all changes, and pushes them'
-  echo -e '$ gitops.sh -y -m "msg" -b <branch|master> -r <remote|origin> -d <gitpath|pwd>'
-  echo -e '$ gitops.sh --yes --msg "commit msg" ---branch <branch|master> -r | --remote <remote|origin> -d | --dir <gitpath|cwd>'
+{ # how to use
+  echo -e 'script actions:'
+  echo -e '-----------------------------'
+  echo -e '  1) initialize git repo'
+  echo -e '  2) add all changes'
+  echo -e '  3) check out/create branch'
+  echo -e '  4) add .gitignore'
+  echo -e '  6) stage all changes'
+  echo -e '  7) commit all changes'
+  echo -e '  8) push all changes\n'
+  echo -e 'script parameters:'
+  echo -e '-----------------------------'
+  echo -e "# default values as example; generates message, 'master' for branch, 'origin' for remote, and \$PWD for repo"
+  echo -e "  gitops -y -m 'updated on $(date +'%m-%d-%Y at %T')' -b master -r origin -d $(basename $PWD)"
+  echo -e '# auto agree to all operations by passing --yes'
+  echo -e '  gitops --yes --msg <msg> --branch <br> --remote <orig> --dir <pathtorepo>\n'
+  echo -e 'script examples:'
+  echo -e '-----------------------------'
+  echo -e '# set message, branch, and remote; default to working dir'
+  echo -e '  gitops.sh -m "commitmsg" -b master -r origin'
+  echo -e '# yes to all; set git folder; use default message, branch, and remote'
+  echo -e '  gitops.sh -y -d ~/gitfolder\n'
+  echo -e 'script alias (optional):'
+  echo -e '-----------------------------'
+  echo -e " alias gitops='bash <(curl -sSL https://raw.githubusercontent.com/jrussellfreelance/bash-scripts/master/git/gitops.sh)'\n"
 }
 
+# variables
+YES=1
+commit_msg="updated on $(date +'%m-%d-%Y at %T')"
+branch="master"
+repo_dir=$(pwd)
+remote="origin"
+remote_url=
+
 # helper functions
-git_repo_branch() { # prints the repo and branch
+function git_repo_branch() { # prints the repo and branch
   repo=$(git remote -v 2>/dev/null | head -n 1 | sed -nE 's@^.*/(.*).git.*$@\1@p')
   if [ "$repo" != "" ]; then
     branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
@@ -36,14 +63,7 @@ function gitdir { # switch to git root folder
   cd $repodir
 }
 
-# variables
-YES=1
-commit_msg="updated on $(date +'%m-%d-%Y at %T')"
-branch="master"
-repo_dir=$(pwd)
-remote="origin"
-remote_url=
-
+# parse script args
 while [ "$1" != "" ]; do
 case $1 in
   -h | --help)
@@ -76,6 +96,9 @@ case $1 in
   esac
   shift
 done
+
+# perform git ops
+echo -e "! gitops.sh started ---"
 
 # validate .git dir exists, otherwise offer to initialize
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
@@ -133,7 +156,6 @@ if [ -f .DS_Store ]; then
   echo -e '+ git rm .DS_Store; rm .DS_Store\n'
 fi
 
-# perform git ops
 # add all untracked files
 if [[ "$YES" == 0 ]] ; then
   key="y"
