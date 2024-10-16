@@ -13,6 +13,8 @@ cat <<'EOF'
 - expect
 - git
 - nano
+- rsync
+- telnet
 - net-tools
 - plocate
 - software-properties-common
@@ -32,6 +34,8 @@ dirmngr \
 expect \
 git \
 nano \
+rsync \
+telnet \
 net-tools \
 plocate \
 software-properties-common \
