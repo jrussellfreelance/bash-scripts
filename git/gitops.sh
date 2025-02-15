@@ -1,6 +1,6 @@
 #!/bin/bash
 ## Tested on a variety of *nix machines and flavors
-## This script executes various git commands to streamline a git add, commit, and push operation
+## This script executes various git commands to streamline the execution of git operations
 ## The commands add all files and commit all changes by default
 ## This script was added primarily for personal convenience
 
