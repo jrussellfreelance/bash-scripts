@@ -1,5 +1,5 @@
 #!/bin/bash
-# JRF SSH utility script
+# jrussellfreelance SSH utility script
 
 # Argument variables
 SSH_FOLDER="$1"
